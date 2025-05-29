@@ -1,0 +1,1761 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="청년농업인 스마트농업 창업 원스톱 플랫폼 구축 방안 - 시스템 설계와 구현 전략">
+    <meta name="keywords" content="원스톱플랫폼, 시스템아키텍처, 디지털농정, 플랫폼설계">
+    <meta name="author" content="박용환 - 크리에이티브 넥서스">
+    
+    <title>해결방안 | 청년농업인 스마트농업 창업 원스톱 플랫폼</title>
+    
+    <!-- 파비콘 -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💡</text></svg>">
+    
+    <!-- 폰트 -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- 아이콘 -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- 커스텀 CSS -->
+    <link href="assets/css/common.css" rel="stylesheet">
+    <link href="assets/css/components.css" rel="stylesheet">
+</head>
+<body>
+    <!-- 네비게이션 -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-seedling me-2"></i>
+                스마트농업 플랫폼
+            </a>
+            
+            <button class="navbar-toggler" type="button">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link" href="index.html">홈</a>
+                <a class="nav-link" href="data-analysis.html">데이터 분석</a>
+                <a class="nav-link" href="problem-definition.html">문제점 정의</a>
+                <a class="nav-link active" href="solution-overview.html">해결방안</a>
+                <a class="nav-link" href="expected-results.html">기대효과</a>
+                <a class="nav-link" href="legal-framework.html">법령 개정안</a> 
+            </div>
+        </div>
+    </nav>
+
+    <!-- 페이지 헤더 -->
+    <header class="page-header">
+        <div class="container text-center">
+            <h1 style="color: white;"><i class="fas fa-lightbulb me-3"></i>해결방안</h1>
+            <p class="lead" style="color: white;">청년농업인 스마트농업 창업 원스톱 플랫폼<br>구체적 설계 방안과 구현 전략</p>
+            
+            <nav class="breadcrumb">
+                <a href="index.html" class="breadcrumb-link"></a>
+                <span class="breadcrumb-item"> </span>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 솔루션 개요 -->
+    <section class="section bg-white">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h2>원스톱 플랫폼 핵심 개념</h2>
+                    <p class="lead">농지확보, 시설허가, 기술교육, 자금지원을 하나의 플랫폼에서 통합 처리하는 혁신적 시스템</p>
+                    
+                    <div class="solution-features">
+                        <div class="feature-item">
+                            <div class="feature-icon bg-primary">
+                                <i class="fas fa-desktop"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h5>디지털 우선 원칙</h5>
+                                <p>모든 신청과 처리 과정을 온라인화하여 24시간 언제든 접근 가능</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <div class="feature-icon bg-secondary">
+                                <i class="fas fa-users-cog"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h5>청년 특화 서비스</h5>
+                                <p>만 18-40세 청년농업인에게 특별 간소화 절차 적용</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <div class="feature-icon bg-accent">
+                                <i class="fas fa-sync-alt"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h5>실시간 연동</h5>
+                                <p>5개 기관의 시스템을 실시간으로 연동하여 중복 업무 최소화</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <div class="feature-icon bg-success">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h5>AI 기반 지원</h5>
+                                <p>개인 맞춤형 컨설팅과 최적화된 창업 경로 제안</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="solution-visual">
+                        <img src="assets/platform-diagram.svg" alt="청년농업인 원스톱 플랫폼 구성도" class="img-fluid" style="max-width: 100%; height: auto;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 시스템 아키텍처 -->
+    <section class="section bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5">시스템 아키텍처</h2>
+            
+            <div class="architecture-diagram">
+                <div class="row">
+                    <!-- 사용자 인터페이스 -->
+                    <div class="col-12 mb-4">
+                        <div class="architecture-layer user-layer">
+                            <h4><i class="fas fa-user me-2"></i>사용자 인터페이스</h4>
+                            <div class="layer-items">
+                                <div class="layer-item">
+                                    <i class="fas fa-mobile-alt"></i>
+                                    <span>모바일 앱</span>
+                                </div>
+                                <div class="layer-item">
+                                    <i class="fas fa-laptop"></i>
+                                    <span>웹 포털</span>
+                                </div>
+                                <div class="layer-item">
+                                    <i class="fas fa-tablet-alt"></i>
+                                    <span>태블릿 UI</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- API 게이트웨이 -->
+                    <div class="col-12 mb-4">
+                        <div class="architecture-layer api-layer">
+                            <h4><i class="fas fa-exchange-alt me-2"></i>API 게이트웨이 & 인증</h4>
+                            <div class="layer-items">
+                                <div class="layer-item">
+                                    <i class="fas fa-shield-alt"></i>
+                                    <span>보안 인증</span>
+                                </div>
+                                <div class="layer-item">
+                                    <i class="fas fa-route"></i>
+                                    <span>라우팅</span>
+                                </div>
+                                <div class="layer-item">
+                                    <i class="fas fa-tachometer-alt"></i>
+                                    <span>로드밸런싱</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 통합 서비스 -->
+                    <div class="col-lg-6 mb-4">
+                        <div class="architecture-layer service-layer">
+                            <h4><i class="fas fa-cogs me-2"></i>통합 서비스 엔진</h4>
+                            <div class="service-modules">
+                                <div class="service-module">
+                                    <i class="fas fa-workflow"></i>
+                                    <span>프로세스 관리</span>
+                                </div>
+                                <div class="service-module">
+                                    <i class="fas fa-file-alt"></i>
+                                    <span>문서 통합</span>
+                                </div>
+                                <div class="service-module">
+                                    <i class="fas fa-bell"></i>
+                                    <span>알림 서비스</span>
+                                </div>
+                                <div class="service-module">
+                                    <i class="fas fa-robot"></i>
+                                    <span>AI 컨설팅</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 외부 시스템 연동 -->
+                    <div class="col-lg-6 mb-4">
+                        <div class="architecture-layer integration-layer">
+                            <h4><i class="fas fa-link me-2"></i>외부 시스템 연동</h4>
+                            <div class="external-systems">
+                                <div class="external-system">
+                                    <i class="fas fa-university"></i>
+                                    <span>농어촌공사</span>
+                                    <small>농지은행</small>
+                                </div>
+                                <div class="external-system">
+                                    <i class="fas fa-city"></i>
+                                    <span>지자체</span>
+                                    <small>허가시스템</small>
+                                </div>
+                                <div class="external-system">
+                                    <i class="fas fa-microscope"></i>
+                                    <span>농업기술센터</span>
+                                    <small>교육시스템</small>
+                                </div>
+                                <div class="external-system">
+                                    <i class="fas fa-piggy-bank"></i>
+                                    <span>농협</span>
+                                    <small>정책자금</small>
+                                </div>
+                                <div class="external-system">
+                                    <i class="fas fa-database"></i>
+                                    <span>농관원</span>
+                                    <small>경영정보</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="architecture-features mt-5">
+                <div class="row">
+                    <div class="col-md-4 mb-3">
+                        <div class="feature-card">
+                            <i class="fas fa-lock text-primary"></i>
+                            <h5>보안 & 개인정보보호</h5>
+                            <p>행정안전부 개인정보보호 가이드라인 준수</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="feature-card">
+                            <i class="fas fa-expand-arrows-alt text-secondary"></i>
+                            <h5>확장성</h5>
+                            <p>마이크로서비스 아키텍처로 유연한 확장</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="feature-card">
+                            <i class="fas fa-heartbeat text-success"></i>
+                            <h5>안정성</h5>
+                            <p>99.9% 가용성 보장 및 장애 대응</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Before/After 비교 -->
+    <section class="section bg-white">
+        <div class="container">
+            <h2 class="text-center mb-5">서비스 플로우 혁신</h2>
+            
+            <div class="comparison">
+                <div class="comparison-item">
+                    <div class="comparison-header before">
+                        <i class="fas fa-times-circle me-2"></i>
+                        현재 (Before)
+                    </div>
+                    <div class="comparison-body">
+                        <h4>순차적 처리 방식</h4>
+                        <div class="process-flow">
+                            <div class="process-step">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <strong>농지은행 방문</strong>
+                                    <p>농지 임대 신청 (대기 2개월)</p>
+                                    <span class="step-time">60일</span>
+                                </div>
+                            </div>
+                            <div class="flow-arrow">↓</div>
+                            <div class="process-step">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <strong>지자체 허가</strong>
+                                    <p>시설원예 허가 신청 (서류 보완 3회)</p>
+                                    <span class="step-time">45일</span>
+                                </div>
+                            </div>
+                            <div class="flow-arrow">↓</div>
+                            <div class="process-step">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <strong>기술센터 교육</strong>
+                                    <p>스마트팜 교육 이수 (대기자 50명)</p>
+                                    <span class="step-time">90일</span>
+                                </div>
+                            </div>
+                            <div class="flow-arrow">↓</div>
+                            <div class="process-step">
+                                <div class="step-number">4</div>
+                                <div class="step-content">
+                                    <strong>농협 자금</strong>
+                                    <p>정책자금 신청 (기존 서류 재제출)</p>
+                                    <span class="step-time">60일</span>
+                                </div>
+                            </div>
+                            <div class="flow-arrow">↓</div>
+                            <div class="process-step">
+                                <div class="step-number">5</div>
+                                <div class="step-content">
+                                    <strong>농업경영체 등록</strong>
+                                    <p>농관원 등록 및 확인</p>
+                                    <span class="step-time">45일</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="total-summary">
+                            <div class="summary-item">
+                                <span class="summary-label">총 소요기간</span>
+                                <span class="summary-value text-danger">300일 (10개월)</span>
+                            </div>
+                            <div class="summary-item">
+                                <span class="summary-label">방문 기관</span>
+                                <span class="summary-value">5개 기관</span>
+                            </div>
+                            <div class="summary-item">
+                                <span class="summary-label">서류 제출</span>
+                                <span class="summary-value">23회</span>
+                            </div>
+                            <div class="summary-item">
+                                <span class="summary-label">총 비용</span>
+                                <span class="summary-value">2,980만원</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="comparison-item">
+                    <div class="comparison-header after">
+                        <i class="fas fa-check-circle me-2"></i>
+                        개선 후 (After)
+                    </div>
+                    <div class="comparison-body">
+                        <h4>병렬 처리 방식</h4>
+                        <div class="process-flow parallel">
+                            <div class="parallel-start">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <strong>원스톱 플랫폼</strong>
+                                    <p>통합 신청서 1회 제출</p>
+                                    <span class="step-time">1일</span>
+                                </div>
+                            </div>
+                            
+                            <div class="parallel-processes">
+                                <div class="parallel-group">
+                                    <div class="parallel-step">
+                                        <strong>농지 + 허가</strong>
+                                        <p>동시 처리</p>
+                                        <span class="step-time">30일</span>
+                                    </div>
+                                    <div class="parallel-step">
+                                        <strong>교육 + 자금</strong>
+                                        <p>병렬 진행</p>
+                                        <span class="step-time">45일</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="parallel-end">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <strong>통합 완료</strong>
+                                    <p>자동 등록 및 승인</p>
+                                    <span class="step-time">3일</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="ai-features">
+                            <h5><i class="fas fa-robot me-2"></i>AI 지원 기능</h5>
+                            <ul>
+                                <li>개인 맞춤형 창업 경로 추천</li>
+                                <li>실시간 진행 상황 알림</li>
+                                <li>자동 서류 작성 지원</li>
+                                <li>전문가 매칭 서비스</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="total-summary success">
+                            <div class="summary-item">
+                                <span class="summary-label">총 소요기간</span>
+                                <span class="summary-value text-success">150일 (5개월)</span>
+                            </div>
+                            <div class="summary-item">
+                                <span class="summary-label">방문 기관</span>
+                                <span class="summary-value">온라인 완결</span>
+                            </div>
+                            <div class="summary-item">
+                                <span class="summary-label">서류 제출</span>
+                                <span class="summary-value">1회 (통합)</span>
+                            </div>
+                            <div class="summary-item">
+                                <span class="summary-label">총 비용</span>
+                                <span class="summary-value">1,480만원</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="improvement-stats mt-5">
+                <div class="row text-center">
+                    <div class="col-md-3 mb-3">
+                        <div class="improvement-item">
+                            <div class="improvement-number">50%</div>
+                            <div class="improvement-label">기간 단축</div>
+                            <div class="improvement-desc">10개월 → 5개월</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <div class="improvement-item">
+                            <div class="improvement-number">96%</div>
+                            <div class="improvement-label">서류 감소</div>
+                            <div class="improvement-desc">23회 → 1회</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <div class="improvement-item">
+                            <div class="improvement-number">50%</div>
+                            <div class="improvement-label">비용 절약</div>
+                            <div class="improvement-desc">1,500만원 절약</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <div class="improvement-item">
+                            <div class="improvement-number">100%</div>
+                            <div class="improvement-label">온라인화</div>
+                            <div class="improvement-desc">24시간 접근</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 우수사례 연계 -->
+    <section class="section bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5">기존 우수사례와의 연계성</h2>
+            <p class="text-center lead mb-5">농식품부가 이미 입증한 성공 모델들을 벤치마킹하여 확장 적용</p>
+            
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <div class="case-study-card">
+                        <div class="case-header">
+                            <div class="case-number">우수사례 15번</div>
+                            <h4>임대차 농지 원스톱 서비스</h4>
+                        </div>
+                        <div class="case-body">
+                            <div class="case-achievement">
+                                <span class="achievement-number">3개 기관</span>
+                                <span class="achievement-desc">→ 1개 기관</span>
+                            </div>
+                            <p>농어촌공사 농지은행과 농관원 농업경영정보 실시간 연계로 방문 없는 민원서비스 구현</p>
+                            
+                            <div class="case-application">
+                                <h6>우리 플랫폼 적용</h6>
+                                <ul>
+                                    <li>농지임대 + 경영체등록 동시 처리</li>
+                                    <li>실시간 시스템 연동 기술 활용</li>
+                                    <li>무방문 서비스 모델 확장</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 mb-4">
+                    <div class="case-study-card">
+                        <div class="case-header">
+                            <div class="case-number">우수사례 2번</div>
+                            <h4>농업경영체 모바일웹</h4>
+                        </div>
+                        <div class="case-body">
+                            <div class="case-achievement">
+                                <span class="achievement-number">정보접근성</span>
+                                <span class="achievement-desc">대폭 개선</span>
+                            </div>
+                            <p>농업경영체 등록 관련 주요 정보를 한 곳에 모아 농업인 정보 접근 편의성 제고</p>
+                            
+                            <div class="case-application">
+                                <h6>우리 플랫폼 적용</h6>
+                                <ul>
+                                    <li>청년농업인 특화 정보 통합</li>
+                                    <li>모바일 우선 UI/UX 설계</li>
+                                    <li>맞춤형 콘텐츠 제공</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 mb-4">
+                    <div class="case-study-card">
+                        <div class="case-header">
+                            <div class="case-number">우수사례 11번</div>
+                            <h4>청년농 농외근로 확대</h4>
+                        </div>
+                        <div class="case-body">
+                            <div class="case-achievement">
+                                <span class="achievement-number">영농정착률</span>
+                                <span class="achievement-desc">향상 기대</span>
+                            </div>
+                            <p>청년농업인의 안정적 소득 확보를 통한 영농 정착률 향상 정책</p>
+                            
+                            <div class="case-application">
+                                <h6>우리 플랫폼 적용</h6>
+                                <ul>
+                                    <li>청년농업인 종합 지원 체계</li>
+                                    <li>단계별 맞춤 지원 프로그램</li>
+                                    <li>지속적 사후관리 서비스</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="success-factors mt-5">
+                <h3 class="text-center mb-4">성공 요인 벤치마킹</h3>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="factor-card">
+                            <i class="fas fa-link text-primary"></i>
+                            <h5>시스템 연동</h5>
+                            <p>기존 15번 사례의 실시간 연동 기술을 5개 기관으로 확장 적용</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="factor-card">
+                            <i class="fas fa-mobile-alt text-secondary"></i>
+                            <h5>모바일 최적화</h5>
+                            <p>2번 사례의 모바일웹 노하우를 청년 특화 인터페이스로 발전</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="factor-card">
+                            <i class="fas fa-user-friends text-success"></i>
+                            <h5>청년 맞춤형</h5>
+                            <p>11번 사례의 청년농 지원 철학을 창업 과정 전반으로 확대</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="factor-card">
+                            <i class="fas fa-chart-line text-warning"></i>
+                            <h5>검증된 효과</h5>
+                            <p>3개 우수사례의 성과를 종합하여 시너지 효과 극대화</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 구현 로드맵 -->
+    <section class="section bg-white">
+        <div class="container">
+            <h2 class="text-center mb-5">구현 로드맵</h2>
+            
+            <div class="roadmap-timeline">
+                <div class="timeline-phase">
+                    <div class="phase-header">
+                        <div class="phase-number">1</div>
+                        <h4>설계 및 준비</h4>
+                        <span class="phase-duration">3개월</span>
+                    </div>
+                    <div class="phase-content">
+                        <div class="phase-tasks">
+                            <div class="task-item">
+                                <i class="fas fa-handshake"></i>
+                                <span>기관별 MOU 체결</span>
+                            </div>
+                            <div class="task-item">
+                                <i class="fas fa-drafting-compass"></i>
+                                <span>시스템 상세 설계</span>
+                            </div>
+                            <div class="task-item">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>보안 및 개인정보보호 방안</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-phase">
+                    <div class="phase-header">
+                        <div class="phase-number">2</div>
+                        <h4>개발 및 구축</h4>
+                        <span class="phase-duration">6개월</span>
+                    </div>
+                    <div class="phase-content">
+                        <div class="phase-tasks">
+                            <div class="task-item">
+                                <i class="fas fa-code"></i>
+                                <span>플랫폼 개발</span>
+                            </div>
+                            <div class="task-item">
+                                <i class="fas fa-plug"></i>
+                                <span>외부 시스템 연동</span>
+                            </div>
+                            <div class="task-item">
+                                <i class="fas fa-robot"></i>
+                                <span>AI 컨설팅 모듈 구축</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-phase">
+                    <div class="phase-header">
+                        <div class="phase-number">3</div>
+                        <h4>시범 운영</h4>
+                        <span class="phase-duration">3개월</span>
+                    </div>
+                    <div class="phase-content">
+                        <div class="phase-tasks">
+                            <div class="task-item">
+                                <i class="fas fa-flask"></i>
+                                <span>시범지역 파일럿 테스트</span>
+                            </div>
+                            <div class="task-item">
+                                <i class="fas fa-comments"></i>
+                                <span>사용자 피드백 수집</span>
+                            </div>
+                            <div class="task-item">
+                                <i class="fas fa-tools"></i>
+                                <span>시스템 최적화</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-phase">
+                    <div class="phase-header">
+                        <div class="phase-number">4</div>
+                        <h4>전국 확산</h4>
+                        <span class="phase-duration">6개월</span>
+                    </div>
+                    <div class="phase-content">
+                        <div class="phase-tasks">
+                            <div class="task-item">
+                                <i class="fas fa-rocket"></i>
+                                <span>전국 서비스 개시</span>
+                            </div>
+                            <div class="task-item">
+                                <i class="fas fa-chart-bar"></i>
+                                <span>성과 모니터링</span>
+                            </div>
+                            <div class="task-item">
+                                <i class="fas fa-expand-arrows-alt"></i>
+                                <span>고도화 및 확장</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="roadmap-summary mt-5">
+                <div class="row text-center">
+                    <div class="col-md-3 mb-3">
+                        <div class="summary-metric">
+                            <div class="metric-number">18개월</div>
+                            <div class="metric-label">전체 구축 기간</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <div class="summary-metric">
+                            <div class="metric-number">50억원</div>
+                            <div class="metric-label">총 구축 예산</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <div class="summary-metric">
+                            <div class="metric-number">5개 기관</div>
+                            <div class="metric-label">연동 대상</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <div class="summary-metric">
+                            <div class="metric-number">450명</div>
+                            <div class="metric-label">연간 수혜 목표</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+ 
+
+    <!-- 푸터 -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h5>
+                        <i class="text-light"></i>
+                        해결방안 페이지
+                    </h5>
+                    <p class="text-light">원스톱 플랫폼 구축 방안</p>
+                    <p class="small text-muted">
+                        실현 가능한 기술적 설계와 구현 전략<br>
+                        기존 우수사례 벤치마킹을 통한 검증된 접근법
+                    </p>
+                </div>
+                <div class="col-lg-6">
+                    <h6>핵심 특징</h6>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-check me-2 text-success"></i>50% 기간 단축 (10개월 → 5개월)</li>
+                        <li><i class="fas fa-check me-2 text-success"></i>96% 서류 감소 (23회 → 1회)</li>
+                        <li><i class="fas fa-check me-2 text-success"></i>100% 온라인화 (24시간 접근)</li>
+                        <li><i class="fas fa-check me-2 text-success"></i>AI 기반 맞춤형 컨설팅</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <hr class="border-secondary my-4">
+            
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="small mb-0">&copy; 2025 크리에이티브 넥서스. 실현 가능한 해결방안.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="index.html" class="text-primary small me-3">
+                        <i class="fas fa-home me-1"></i>홈
+                    </a>
+                    <a href="expected-results.html" class="text-primary small">
+                        <i class="fas fa-arrow-right me-1"></i>다음 단계
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript 라이브러리 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    <!-- 커스텀 JavaScript -->
+    <script src="assets/js/common.js"></script>
+    
+    <!-- 페이지별 스크립트 -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // GSAP ScrollTrigger 등록
+            gsap.registerPlugin(ScrollTrigger);
+            
+            // SVG 이미지 페이드인 애니메이션
+            gsap.from('.solution-visual img', {
+                duration: 1,
+                scale: 0.8,
+                opacity: 0,
+                delay: 0.5,
+                ease: 'back.out(1.2)',
+                scrollTrigger: {
+                    trigger: '.solution-visual',
+                    start: 'top 80%'
+                }
+            });
+            
+            // 아키텍처 레이어 애니메이션
+            gsap.from('.architecture-layer', {
+                duration: 0.8,
+                y: 50,
+                opacity: 0,
+                stagger: 0.3,
+                scrollTrigger: {
+                    trigger: '.architecture-diagram',
+                    start: 'top 70%'
+                }
+            });
+            
+            // 프로세스 플로우 애니메이션
+            gsap.from('.process-step', {
+                duration: 0.6,
+                x: -50,
+                opacity: 0,
+                stagger: 0.2,
+                scrollTrigger: {
+                    trigger: '.comparison',
+                    start: 'top 70%'
+                }
+            });
+            
+            // 개선 통계 카운터 (수정된 안전한 버전)
+            const improvementNumbers = document.querySelectorAll('.improvement-number');
+            improvementNumbers.forEach(element => {
+                const finalText = element.textContent.trim();
+                const number = parseFloat(finalText.replace('%', ''));
+                
+                if (!isNaN(number)) {
+                    // 초기값을 0으로 설정
+                    element.textContent = finalText.includes('%') ? '0%' : '0';
+                    
+                    // 카운터 객체 생성
+                    const counter = { value: 0 };
+                    
+                    gsap.to(counter, {
+                        duration: 2,
+                        value: number,
+                        ease: "power2.out",
+                        scrollTrigger: {
+                            trigger: element,
+                            start: 'top 80%',
+                            once: true  // 한 번만 실행
+                        },
+                        onUpdate: function() {
+                            const currentValue = Math.round(counter.value);
+                            if (finalText.includes('%')) {
+                                element.textContent = currentValue + '%';
+                            } else {
+                                element.textContent = currentValue.toString();
+                            }
+                        }
+                    });
+                }
+            });
+            
+            // 로드맵 타임라인 애니메이션
+            gsap.from('.timeline-phase', {
+                duration: 0.8,
+                y: 30,
+                opacity: 0,
+                stagger: 0.2,
+                scrollTrigger: {
+                    trigger: '.roadmap-timeline',
+                    start: 'top 70%'
+                }
+            });
+        });
+    </script>
+    
+    <style>
+        /* 페이지 특화 스타일 */
+        .solution-features {
+            margin-top: 2rem;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 2rem;
+        }
+        
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+        
+        .feature-content h5 {
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+        
+        .solution-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+        
+        .solution-visual img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .architecture-layer {
+            background: white;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-left: 4px solid var(--primary-green);
+        }
+        
+        .user-layer { border-left-color: var(--primary-green); }
+        .api-layer { border-left-color: var(--youth-orange); }
+        .service-layer { border-left-color: var(--smart-blue); }
+        .integration-layer { border-left-color: var(--success-green); }
+        
+        .layer-items, .service-modules, .external-systems {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .layer-item, .service-module, .external-system {
+            background: var(--gray-50);
+            border-radius: 0.5rem;
+            padding: 0.75rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 120px;
+            text-align: center;
+        }
+        
+        .layer-item i, .service-module i, .external-system i {
+            font-size: 1.5rem;
+            color: var(--primary-green);
+            margin-bottom: 0.5rem;
+        }
+        
+        .external-system small {
+            color: var(--text-gray);
+            font-size: 0.75rem;
+            margin-top: 0.25rem;
+        }
+        
+        .feature-card {
+            text-align: center;
+            padding: 1rem;
+            height: 100%;
+        }
+        
+        .feature-card i {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .process-flow {
+            padding: 1rem 0;
+        }
+        
+        .process-step {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: var(--gray-50);
+            border-radius: 0.5rem;
+        }
+        
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: var(--primary-green);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+        
+        .step-content {
+            flex: 1;
+        }
+        
+        .step-content strong {
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+        
+        .step-content p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: var(--text-gray);
+        }
+        
+        .step-time {
+            background: var(--warning-amber);
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 1rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-left: 1rem;
+        }
+        
+        .flow-arrow {
+            text-align: center;
+            font-size: 1.5rem;
+            color: var(--text-gray);
+            margin: 0.5rem 0;
+        }
+        
+        .parallel-processes {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .parallel-group {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            flex: 1;
+        }
+        
+        .parallel-step {
+            background: var(--gray-50);
+            border-radius: 0.5rem;
+            padding: 1rem;
+            text-align: center;
+        }
+        
+        .parallel-start, .parallel-end {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: var(--success-green);
+            color: white;
+            border-radius: 0.5rem;
+        }
+        
+        .total-summary {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+            padding: 1rem;
+            background: var(--gray-50);
+            border-radius: 0.5rem;
+        }
+        
+        .summary-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 100px;
+        }
+        
+        .summary-label {
+            font-size: 0.8rem;
+            color: var(--text-gray);
+            margin-bottom: 0.25rem;
+        }
+        
+        .summary-value {
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        /* 개선 통계 스타일 */
+        .improvement-stats {
+            background: linear-gradient(135deg, #E8F5E8, #F3E5F5);
+            border-radius: 1rem;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .improvement-item {
+            background: white;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .improvement-item:hover {
+            transform: translateY(-4px);
+        }
+        
+        .improvement-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-green);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        .improvement-label {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+        
+        .improvement-desc {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+        }
+        
+        /* AI 기능 스타일 */
+        .ai-features {
+            background: linear-gradient(135deg, #E3F2FD, #F3E5F5);
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .ai-features h5 {
+            color: var(--smart-blue);
+            margin-bottom: 0.75rem;
+        }
+        
+        .ai-features ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .ai-features li {
+            padding: 0.25rem 0;
+            font-size: 0.9rem;
+            color: var(--text-gray);
+        }
+        
+        .ai-features li:before {
+            content: '🤖';
+            margin-right: 0.5rem;
+        }
+        
+        /* 케이스 스터디 카드 */
+        .case-study-card {
+            background: white;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .case-study-card:hover {
+            transform: translateY(-4px);
+        }
+        
+        .case-header {
+            background: linear-gradient(135deg, var(--primary-green), var(--smart-blue));
+            color: white;
+            padding: 1.5rem;
+        }
+        
+        .case-number {
+            background: rgba(255,255,255,0.2);
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 0.5rem;
+        }
+        
+        .case-header h4 {
+            font-size: 1.1rem;
+            margin: 0;
+        }
+        
+        .case-body {
+            padding: 1.5rem;
+        }
+        
+        .case-achievement {
+            text-align: center;
+            padding: 1rem;
+            background: var(--gray-50);
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .achievement-number {
+            font-weight: 700;
+            color: var(--primary-green);
+            font-size: 1.1rem;
+        }
+        
+        .achievement-desc {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+        
+        .case-application {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--gray-200);
+        }
+        
+        .case-application h6 {
+            color: var(--primary-green);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .case-application ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .case-application li {
+            padding: 0.25rem 0;
+            font-size: 0.9rem;
+            color: var(--text-gray);
+        }
+        
+        .case-application li:before {
+            content: '✓';
+            color: var(--success-green);
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+        
+        /* 팩터 카드 */
+        .factor-card {
+            background: white;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 1rem;
+        }
+        
+        .factor-card i {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .factor-card h5 {
+            color: var(--text-dark);
+            margin-bottom: 0.75rem;
+        }
+        
+        .factor-card p {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            margin: 0;
+        }
+        
+        /* 로드맵 스타일 */
+        .roadmap-timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+        
+        .timeline-phase {
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+        
+        .phase-header {
+            background: linear-gradient(135deg, var(--primary-green), var(--smart-blue));
+            color: white;
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .phase-number {
+            background: rgba(255,255,255,0.2);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+        
+        .phase-header h4 {
+            margin: 0;
+            flex: 1;
+        }
+        
+        .phase-duration {
+            background: var(--warning-amber);
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .phase-content {
+            padding: 1.5rem;
+        }
+        
+        .phase-tasks {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .task-item {
+            background: var(--gray-50);
+            border-radius: 0.5rem;
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            min-width: 200px;
+            flex: 1;
+        }
+        
+        .task-item i {
+            color: var(--primary-green);
+            font-size: 1.2rem;
+        }
+        
+        .task-item span {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+        }
+        
+        /* 요약 메트릭 */
+        .summary-metric {
+            text-align: center;
+            padding: 1rem;
+        }
+        
+        .metric-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-green);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        .metric-label {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        /* 반응형 디자인 */
+        @media (max-width: 767.98px) {
+            .phase-tasks {
+                flex-direction: column;
+            }
+            
+            .task-item {
+                min-width: 100%;
+            }
+            
+            .improvement-number {
+                font-size: 2.5rem;
+            }
+            
+            .metric-number {
+                font-size: 2rem;
+            }
+        }
+            margin: 1rem 0;
+        }
+        
+        .parallel-group {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            flex: 1;
+        }
+        
+        .parallel-step {
+            background: var(--gray-50);
+            border-radius: 0.5rem;
+            padding: 1rem;
+            text-align: center;
+        }
+        
+        .parallel-step strong {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+        
+        .parallel-start, .parallel-end {
+            display: flex;
+            align-items: center;
+            margin: 1rem 0;
+            padding: 1rem;
+            background: var(--success-green);
+            color: white;
+            border-radius: 0.5rem;
+        }
+        
+        .ai-features {
+            background: var(--gray-50);
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .ai-features h5 {
+            color: var(--primary-green);
+            margin-bottom: 1rem;
+        }
+        
+        .ai-features ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .ai-features li {
+            padding: 0.25rem 0;
+            font-size: 0.9rem;
+        }
+        
+        .ai-features li::before {
+            content: '🤖';
+            margin-right: 0.5rem;
+        }
+        
+        .total-summary {
+            background: var(--gray-100);
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .total-summary.success {
+            background: #E8F5E8;
+            border-left: 4px solid var(--success-green);
+        }
+        
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--gray-200);
+        }
+        
+        .summary-item:last-child {
+            border-bottom: none;
+        }
+        
+        .summary-label {
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+        
+        .summary-value {
+            font-family: 'Roboto', monospace;
+            font-weight: 600;
+        }
+        
+        .improvement-stats {
+            background: var(--gray-50);
+            border-radius: 1rem;
+            padding: 2rem;
+        }
+        
+        .improvement-item {
+            text-align: center;
+        }
+        
+        .improvement-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-green);
+            font-family: 'Roboto', monospace;
+        }
+        
+        .improvement-label {
+            font-weight: 600;
+            color: var(--text-dark);
+            margin: 0.5rem 0;
+        }
+        
+        .improvement-desc {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+        }
+        
+        .case-study-card {
+            background: white;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            height: 100%;
+            border-top: 4px solid var(--primary-green);
+        }
+        
+        .case-header {
+            background: var(--gray-50);
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .case-number {
+            background: var(--primary-green);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+        
+        .case-header h4 {
+            margin: 0;
+            color: var(--text-dark);
+        }
+        
+        .case-body {
+            padding: 1.5rem;
+        }
+        
+        .case-achievement {
+            text-align: center;
+            background: var(--success-green);
+            color: white;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .achievement-number {
+            display: block;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        
+        .achievement-desc {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        .case-application {
+            background: var(--gray-50);
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .case-application h6 {
+            color: var(--primary-green);
+            margin-bottom: 0.75rem;
+        }
+        
+        .case-application ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .case-application li {
+            padding: 0.25rem 0;
+            font-size: 0.9rem;
+        }
+        
+        .case-application li::before {
+            content: '✓';
+            color: var(--success-green);
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+        
+        .factor-card {
+            background: white;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .factor-card i {
+            font-size: 2rem;
+            margin-right: 1rem;
+            margin-top: 0.25rem;
+        }
+        
+        .roadmap-timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .timeline-phase {
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .phase-header {
+            background: linear-gradient(135deg, var(--primary-green), var(--smart-blue));
+            color: white;
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .phase-number {
+            width: 50px;
+            height: 50px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .phase-header h4 {
+            flex: 1;
+            margin: 0;
+        }
+        
+        .phase-duration {
+            background: rgba(255,255,255,0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 1rem;
+            font-size: 0.9rem;
+        }
+        
+        .phase-content {
+            padding: 1.5rem;
+        }
+        
+        .phase-tasks {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .task-item {
+            background: var(--gray-50);
+            border-radius: 0.5rem;
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            min-width: 200px;
+            flex: 1;
+        }
+        
+        .task-item i {
+            color: var(--primary-green);
+            font-size: 1.2rem;
+        }
+        
+        .summary-metric {
+            text-align: center;
+        }
+        
+        .metric-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-green);
+            font-family: 'Roboto', monospace;
+        }
+        
+        .metric-label {
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-top: 0.5rem;
+        }
+        
+        .next-preview {
+            background: rgba(255,255,255,0.1);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+        
+        .next-preview.current {
+            background: rgba(255,255,255,0.2);
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+        
+        .next-preview i {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .next-preview h5 {
+            margin-bottom: 0.5rem;
+        }
+        
+        .next-preview p {
+            margin: 0;
+            opacity: 0.9;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 767.98px) {
+            .platform-overview {
+                width: 300px;
+                height: 300px;
+            }
+            
+            .platform-center {
+                width: 100px;
+                height: 100px;
+                font-size: 1.5rem;
+            }
+            
+            .platform-service {
+                min-width: 80px;
+                padding: 0.75rem;
+            }
+            
+            .feature-item {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .feature-icon {
+                margin-right: 0;
+                margin-bottom: 1rem;
+            }
+            
+            .parallel-processes {
+                flex-direction: column;
+            }
+            
+            .roadmap-timeline {
+                gap: 1rem;
+            }
+            
+            .phase-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 0.5rem;
+            }
+            
+            .phase-tasks {
+                flex-direction: column;
+            }
+            
+            .task-item {
+                min-width: auto;
+            }
+        }
+    </style>
+</body>
+</html>

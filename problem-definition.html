@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="청년농업인 스마트농업 창업의 문제점 분석 - 김○○씨 사례를 통한 현실 진단">
+    <meta name="keywords" content="청년농업, 스마트농업, 창업문제, 규제개선, 농업정책">
+    <meta name="author" content="박용환 - 크리에이티브 넥서스">
+    
+    <title>문제점 정의 | 청년농업인 스마트농업 창업 원스톱 플랫폼</title>
+    
+    <!-- 파비콘 -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌱</text></svg>">
+    
+    <!-- 폰트 -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- 아이콘 -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- 커스텀 CSS -->
+    <link href="assets/css/common.css" rel="stylesheet">
+    <link href="assets/css/components.css" rel="stylesheet">
+    
+    <!-- 페이지 특화 스타일 -->
+    <style>
+        .problem-hero {
+            background: linear-gradient(135deg, #2E7D32 0%, #1B5E20 100%);
+            color: white;
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .problem-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="40" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="80" r="1.5" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
+            animation: float 20s infinite linear;
+        }
+        
+        .timeline-container {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 0;
+        }
+        
+        .timeline {
+            position: relative;
+            padding-left: 3rem;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 1rem;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(180deg, #FF6B35, #FFB74D);
+            border-radius: 2px;
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            margin-left: 2rem;
+            opacity: 0;
+            transform: translateX(30px);
+            transition: all 0.6s ease;
+        }
+        
+        /* 서클 제거 - pseudo-elements 차단 */
+        .timeline-item::before,
+        .timeline-item::after {
+            display: none !important;
+        }
+        
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .timeline-date {
+            font-size: 0.9rem;
+            color: #FF6B35;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .timeline-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #2E7D32;
+            margin-bottom: 0.5rem;
+        }
+        
+        .timeline-description {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        
+        .timeline-status {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-top: 0.5rem;
+        }
+        
+        .status-waiting {
+            background: #FFF3E0;
+            color: #F57C00;
+        }
+        
+        .status-delay {
+            background: #FFEBEE;
+            color: #C62828;
+        }
+        
+        .status-complete {
+            background: #E8F5E8;
+            color: #2E7D32;
+        }
+        
+        .problem-stats {
+            background: linear-gradient(135deg, #FFF3E0 0%, #FFE0B2 100%);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 1rem;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #FF6B35;
+            display: block;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 0.5rem;
+        }
+        
+        .pain-point {
+            background: white;
+            border-left: 4px solid #F44336;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-radius: 0 15px 15px 0;
+            box-shadow: 0 4px 15px rgba(244, 67, 54, 0.1);
+        }
+        
+        .pain-point-icon {
+            color: #F44336;
+            font-size: 1.5rem;
+            margin-right: 1rem;
+        }
+        
+        .comparison-card {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            margin: 1rem 0;
+            border-top: 4px solid #FF6B35;
+        }
+        
+        .trend-insight {
+            background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .insight-highlight {
+            background: rgba(255, 107, 53, 0.1);
+            border: 2px solid #FF6B35;
+            border-radius: 10px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        
+        @media (max-width: 768px) {
+            .timeline {
+                padding-left: 2rem;
+            }
+            
+            .timeline-item {
+                margin-left: 1rem;
+            }
+            
+            .timeline-item::before {
+                left: -2rem;
+            }
+            
+            .stat-number {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 네비게이션 -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-seedling me-2"></i>
+                스마트농업 플랫폼
+            </a>
+            
+            <button class="navbar-toggler" type="button">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link" href="index.html">홈</a>
+                <a class="nav-link" href="data-analysis.html">데이터 분석</a>
+                <a class="nav-link active" href="problem-definition.html">문제점 정의</a>
+                <a class="nav-link" href="solution-overview.html">해결방안</a>
+                <a class="nav-link" href="expected-results.html">기대효과</a>
+                <a class="nav-link" href="legal-framework.html">법령 개정안</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 페이지 헤더 -->
+    <header class="page-header">
+        <div class="container text-center">
+            <h1 style="color: white;"><i class="fas fa-exclamation-triangle me-3"></i>문제점 정의</h1>
+            <p class="lead" style="color: white;">청년농업인 스마트농업 창업의 현실적 장벽<br>복잡한 절차와 분산된 행정서비스 분석</p>
+            
+            <nav class="breadcrumb"> 
+            </nav>
+        </div>
+    </header>
+
+    <!-- 네이버 트렌드 인사이트 -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <h2 class="text-center mb-5">
+                        <i class="fas fa-chart-line text-primary me-3"></i>
+                        데이터가 말하는 현실
+                    </h2>
+                    
+                    <div class="trend-insight">
+                        <h3 class="fw-bold text-primary mb-4">
+                            <i class="fas fa-search me-2"></i>
+                            네이버 데이터랩 3년간 분석 결과
+                        </h3>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="insight-highlight">
+                                    <h5 class="fw-bold text-primary">
+                                        <i class="fas fa-fire me-2"></i>
+                                        역대 최고 관심도
+                                    </h5>
+                                    <p class="mb-2"><strong>2024년 4월 청년농업 검색량 100점</strong> 달성</p>
+                                    <p class="mb-0">역대 최고치 기록, MZ세대 농업 진입 욕구 폭증</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="insight-highlight">
+                                    <h5 class="fw-bold text-success">
+                                        <i class="fas fa-rocket me-2"></i>
+                                        급상승 키워드
+                                    </h5>
+                                    <p class="mb-2"><strong>농업경영 전년 대비 87.3% 증가</strong></p>
+                                    <p class="mb-0">코로나19 이후 월평균 12% 지속 상승</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4 p-3 bg-white rounded">
+                            <h6 class="fw-bold text-dark">
+                                <i class="fas fa-lightbulb text-warning me-2"></i>
+                                정책적 시사점
+                            </h6>
+                            <ul class="mb-0">
+                                <li><strong>디지털 네이티브 세대</strong>의 농업 진입 욕구가 역대 최고 수준 도달</li>
+                                <li>기존 <strong>아날로그 농정</strong>으로는 대응 불가한 새로운 세대 부상</li>
+                                <li><strong>"지금이 청년농업 정책 혁신의 골든타임"</strong> (데이터 기반 결론)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 김○○씨 창업 타임라인 -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <h2 class="text-center mb-5">
+                        <i class="fas fa-user-circle text-success me-3"></i>
+                        김○○씨(29세) 창업 여정 재현
+                    </h2>
+                    <p class="text-center text-muted mb-5">
+                        前 IT개발자에서 파프리카 스마트팜 사업자가 되기까지의 실제 과정
+                    </p>
+                    
+                    <div class="timeline-container">
+                        <div class="timeline">
+                            <div class="timeline-item" data-delay="0">
+                                <div class="timeline-date">2023년 3월</div>
+                                <div class="timeline-title">
+                                    <i class="fas fa-lightbulb me-2"></i>
+                                    귀농 결심 및 정보 수집 시작
+                                </div>
+                                <div class="timeline-description">
+                                    IT업계 번아웃으로 귀농 결심. 스마트팜에 관심을 갖고 온라인 검색 시작.
+                                    "어디서부터 시작해야 할지 막막했습니다."
+                                </div>
+                                <span class="timeline-status status-complete">계획 수립</span>
+                            </div>
+                            
+                            <div class="timeline-item delay" data-delay="100">
+                                <div class="timeline-date">2023년 5월</div>
+                                <div class="timeline-title">
+                                    <i class="fas fa-home me-2"></i>
+                                    농지은행 상담 및 농지 임대 신청
+                                </div>
+                                <div class="timeline-description">
+                                    농어촌공사 방문하여 농지 임대 상담. 적합한 농지 찾기까지 여러 차례 방문.
+                                    <strong>대기기간 2개월</strong> 소요.
+                                </div>
+                                <span class="timeline-status status-waiting">대기 2개월</span>
+                            </div>
+                            
+                            <div class="timeline-item delay" data-delay="200">
+                                <div class="timeline-date">2023년 7월</div>
+                                <div class="timeline-title">
+                                    <i class="fas fa-file-alt me-2"></i>
+                                    지자체 시설원예 허가 신청
+                                </div>
+                                <div class="timeline-description">
+                                    시군청 농업정책과 방문하여 시설원예 허가 신청. 
+                                    <strong>서류 보완 요구 3회</strong> - 동일한 내용을 다른 양식으로 재작성.
+                                </div>
+                                <span class="timeline-status status-delay">서류 보완 3회</span>
+                            </div>
+                            
+                            <div class="timeline-item delay" data-delay="300">
+                                <div class="timeline-date">2023년 9월</div>
+                                <div class="timeline-title">
+                                    <i class="fas fa-graduation-cap me-2"></i>
+                                    농업기술센터 스마트팜 교육 이수
+                                </div>
+                                <div class="timeline-description">
+                                    스마트팜 운영 교육 신청. 인기 과정으로 <strong>대기자 명단 50명</strong>.
+                                    교육 시작까지 1개월 대기 후 4주간 교육 이수.
+                                </div>
+                                <span class="timeline-status status-waiting">대기자 50명</span>
+                            </div>
+                            
+                            <div class="timeline-item delay" data-delay="400">
+                                <div class="timeline-date">2023년 11월</div>
+                                <div class="timeline-title">
+                                    <i class="fas fa-won-sign me-2"></i>
+                                    농협 정책자금 신청
+                                </div>
+                                <div class="timeline-description">
+                                    청년농업인 창업자금 신청을 위해 농협 방문. 
+                                    <strong>기존 서류 재제출 요구</strong> - 각 기관별 양식이 달라 전부 새로 작성.
+                                </div>
+                                <span class="timeline-status status-delay">재서류 제출</span>
+                            </div>
+                            
+                            <div class="timeline-item success" data-delay="500">
+                                <div class="timeline-date">2024년 1월</div>
+                                <div class="timeline-title">
+                                    <i class="fas fa-check-circle me-2"></i>
+                                    최종 창업 완료 - 파프리카 스마트팜 운영 시작
+                                </div>
+                                <div class="timeline-description">
+                                    0.5ha 규모 파프리카 스마트팜 완공. IoT센서 30개, AI 생육관리 시스템 도입.
+                                    <strong>현재 월매출 2,800만원, 연매출 3.4억원</strong> 달성.
+                                </div>
+                                <span class="timeline-status status-complete">창업 성공</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 문제점 분석 -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <h2 class="text-center mb-5">
+                        <i class="fas fa-search me-3"></i>
+                        핵심 문제점 분석
+                    </h2>
+                    
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="pain-point">
+                                <h5 class="fw-bold">
+                                    <i class="fas fa-copy pain-point-icon"></i>
+                                    중복 서류 제출의 악순환
+                                </h5>
+                                <p class="mb-3">동일한 개인정보를 <strong>5개 기관에 23회</strong> 중복 제출</p>
+                                <ul class="mb-0">
+                                    <li>농지은행 (농어촌공사): 신상정보, 영농계획서</li>
+                                    <li>시군청: 동일 정보를 다른 양식으로 재작성</li>
+                                    <li>농업기술센터: 교육 신청서 별도 작성</li>
+                                    <li>농협: 자금 신청서 또 다른 양식</li>
+                                    <li>각종 증빙서류: 총 A4 847매 제출</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-6">
+                            <div class="pain-point">
+                                <h5 class="fw-bold">
+                                    <i class="fas fa-clock pain-point-icon"></i>
+                                    긴 대기시간과 기회비용
+                                </h5>
+                                <p class="mb-3">평균 대기시간 <strong>45일</strong>, 기관 간 정보 공유 부재</p>
+                                <ul class="mb-0">
+                                    <li>농지 임대: 2개월 대기</li>
+                                    <li>시설허가: 서류 보완으로 추가 지연</li>
+                                    <li>교육 대기: 50명 대기자 명단</li>
+                                    <li>자금 승인: 서류 재제출로 재지연</li>
+                                    <li>소득 공백 10개월: 2,800만원 기회비용</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-6">
+                            <div class="pain-point">
+                                <h5 class="fw-bold">
+                                    <i class="fas fa-question-circle pain-point-icon"></i>
+                                    정보 접근성의 한계
+                                </h5>
+                                <p class="mb-3">청년농업인 <strong>우대 혜택을 몰라서</strong> 놓칠 뻔한 상황</p>
+                                <ul class="mb-0">
+                                    <li>각 기관별 웹사이트 정보 분산</li>
+                                    <li>청년농업인 특별 혜택 홍보 부족</li>
+                                    <li>신청 자격 요건 복잡성</li>
+                                    <li>온라인 통합 창구 부재</li>
+                                    <li>"알아서 찾아야 하는" 수동적 정보 제공</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-6">
+                            <div class="pain-point">
+                                <h5 class="fw-bold">
+                                    <i class="fas fa-users pain-point-icon"></i>
+                                    높은 창업 포기율
+                                </h5>
+                                <p class="mb-3">복잡한 절차로 인한 <strong>30% 중도 포기</strong> 발생</p>
+                                <ul class="mb-0">
+                                    <li>연간 1,200명 신규 등록 중 360명 포기</li>
+                                    <li>일반 창업 3-6개월 vs 농업 8-12개월</li>
+                                    <li>MZ세대의 "빠른 실행" 성향과 불일치</li>
+                                    <li>복잡한 절차에 대한 스트레스</li>
+                                    <li>청년 인재의 농업 이탈 가속화</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 비용 분석 -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <h2 class="text-center mb-5">
+                        <i class="fas fa-calculator text-danger me-3"></i>
+                        김○○씨 사례 비용 분석
+                    </h2>
+                    
+                    <div class="problem-stats">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="stat-item">
+                                    <span class="stat-number" data-target="180">0</span>
+                                    <div class="stat-label">교통비·서류발급비<br>(만원)</div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="stat-item">
+                                    <span class="stat-number" data-target="2800">0</span>
+                                    <div class="stat-label">기회비용<br>(소득공백, 만원)</div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="stat-item">
+                                    <span class="stat-number" data-target="2980">0</span>
+                                    <div class="stat-label">총 사회적 비용<br>(만원)</div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="stat-item">
+                                    <span class="stat-number" data-target="1500">0</span>
+                                    <div class="stat-label">원스톱시 절약가능<br>(만원)</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="text-center mt-4">
+                            <div class="alert alert-warning d-inline-block">
+                                <h5 class="fw-bold mb-2">
+                                    <i class="fas fa-quote-left me-2"></i>
+                                    김○○씨 증언
+                                </h5>
+                                <p class="mb-0">
+                                    "원스톱 플랫폼이 있었다면 <strong>5개월 단축, 1,500만원 절약</strong> 가능했을 것"
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 현황 통계 -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <h2 class="text-center mb-5">
+                        <i class="fas fa-chart-bar text-info me-3"></i>
+                        전국 현황 통계
+                    </h2>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="comparison-card">
+                                <h5 class="fw-bold text-primary mb-3">
+                                    <i class="fas fa-users me-2"></i>
+                                    청년농업인 현황
+                                </h5>
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <span>연간 신규 등록</span>
+                                    <span class="fw-bold text-success">1,200명</span>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <span>창업 포기율</span>
+                                    <span class="fw-bold text-danger">30%</span>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <span>스마트팜 도입 희망률</span>
+                                    <span class="fw-bold text-info">78%</span>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span>평균 창업 준비기간</span>
+                                    <span class="fw-bold text-warning">8-12개월</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <div class="comparison-card">
+                                <h5 class="fw-bold text-primary mb-3">
+                                    <i class="fas fa-balance-scale me-2"></i>
+                                    타 분야 대비 현황
+                                </h5>
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <span>일반 창업 기간</span>
+                                    <span class="fw-bold text-success">3-6개월</span>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <span>농업 창업 기간</span>
+                                    <span class="fw-bold text-danger">8-12개월</span>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <span>차이</span>
+                                    <span class="fw-bold text-warning">2배 더 오래</span>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span>MZ세대 기대 수준</span>
+                                    <span class="fw-bold text-info">빠른 실행</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 기존 우수사례 연계 -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <h2 class="text-center mb-5">
+                        <i class="fas fa-link text-success me-3"></i>
+                        농식품부 기존 성과와의 연계점
+                    </h2>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="comparison-card">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="badge bg-success me-3" style="font-size: 1rem;">우수사례 15</div>
+                                    <h5 class="fw-bold mb-0">임대차 농지 원스톱 서비스</h5>
+                                </div>
+                                <p class="text-muted mb-3">
+                                    농어촌공사-농관원 시스템 연계로 전화 한 통으로 농업경영체 변경등록 완료
+                                </p>
+                                <div class="alert alert-success">
+                                    <strong>검증된 효과:</strong> 3개 기관 방문 → 1개 기관, 2-10일 → 0.5일
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <div class="comparison-card">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="badge bg-success me-3" style="font-size: 1rem;">우수사례 2</div>
+                                    <h5 class="fw-bold mb-0">농업경영체 모바일웹</h5>
+                                </div>
+                                <p class="text-muted mb-3">
+                                    분산된 정보를 한 곳에 모아 농업인의 정보 접근성 대폭 개선
+                                </p>
+                                <div class="alert alert-info">
+                                    <strong>검증된 효과:</strong> 원스톱 정보 제공으로 정보 취약계층 편의성 제고
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center mt-4">
+                        <div class="alert alert-warning d-inline-block">
+                            <h5 class="fw-bold mb-2">
+                                <i class="fas fa-lightbulb me-2"></i>
+                                정책 연계 포인트
+                            </h5>
+                            <p class="mb-0">
+                                농식품부는 이미 <strong>디지털화</strong>와 <strong>원스톱 서비스</strong>의 효과를 입증했으나,<br>
+                                <strong>청년농업인의 스마트농업 창업</strong>에 특화된 통합 지원체계는 부재한 상황
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 다음 단계 안내 -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h2 class="mb-4">
+                        <i class="fas fa-arrow-right text-primary me-3"></i>
+                        다음 단계: 해결방안
+                    </h2>
+                    <p class="lead text-muted mb-4">
+                        김○○씨와 같은 사례를 방지하고, 청년농업인의 창업 성공률을 높이기 위한<br>
+                        <strong>구체적이고 실현 가능한 해결방안</strong>을 제시합니다.
+                    </p>
+                    <a href="solution-overview.html" class="btn btn-primary btn-lg">
+                        <i class="fas fa-lightbulb me-2"></i>
+                        해결방안 보기
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 푸터 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h5 class="fw-bold mb-3">청년농업인 스마트농업 창업 원스톱 플랫폼</h5>
+                    <p class="text-light-muted">
+                        2025년 농식품 규제혁신 공모전 제안<br>
+                        데이터 기반 정책 제안으로 농업 혁신을 이끌어갑니다.
+                    </p>
+                </div>
+                <div class="col-lg-3">
+                    <h6 class="fw-bold mb-3">주요 페이지</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="data-analysis.html" class="text-light-muted">데이터 분석</a></li>
+                        <li><a href="problem-definition.html" class="text-light-muted">문제점 정의</a></li>
+                        <li><a href="solution-overview.html" class="text-light-muted">해결방안</a></li>
+                        <li><a href="expected-results.html" class="text-light-muted">기대효과</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3">
+                    <h6 class="fw-bold mb-3">제안자 정보</h6>
+                    <p class="text-light-muted mb-1">박용환</p>
+                    <p class="text-light-muted mb-1">크리에이티브 넥서스</p>
+                    <p class="text-light-muted mb-1">sanoramyun8@gmail.com</p>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0 text-light-muted">
+                        © 2025 농식품 규제혁신 제안 프로젝트. All rights reserved.
+                    </p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="mb-0 text-light-muted">
+                        Made with <i class="fas fa-heart text-danger"></i> for Korean Agriculture
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript 라이브러리 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="assets/js/common.js"></script>
+
+    <!-- 페이지 특화 JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // GSAP 등록
+            gsap.registerPlugin(ScrollTrigger);
+            
+            // 숫자 카운터 애니메이션
+            const counters = document.querySelectorAll('.stat-number[data-target]');
+            counters.forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-target'));
+                const duration = 2000;
+                
+                ScrollTrigger.create({
+                    trigger: counter,
+                    start: "top 80%",
+                    onEnter: function() {
+                        gsap.to(counter, {
+                            duration: duration / 1000,
+                            innerHTML: target,
+                            snap: { innerHTML: 1 },
+                            ease: "power2.out",
+                            onUpdate: function() {
+                                counter.innerHTML = Math.ceil(counter.innerHTML);
+                            }
+                        });
+                    }
+                });
+            });
+            
+            // 타임라인 아이템 애니메이션
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            timelineItems.forEach((item, index) => {
+                ScrollTrigger.create({
+                    trigger: item,
+                    start: "top 85%",
+                    onEnter: function() {
+                        setTimeout(() => {
+                            item.classList.add('visible');
+                        }, index * 200);
+                    }
+                });
+            });
+            
+            // 파티클 효과
+            function createParticle() {
+                const particle = document.createElement('div');
+                particle.style.cssText = `
+                    position: absolute;
+                    width: 4px;
+                    height: 4px;
+                    background: rgba(255, 255, 255, 0.5);
+                    border-radius: 50%;
+                    pointer-events: none;
+                    z-index: 1;
+                `;
+                
+                const hero = document.querySelector('.problem-hero');
+                if (hero) {
+                    hero.appendChild(particle);
+                    
+                    gsap.set(particle, {
+                        x: Math.random() * window.innerWidth,
+                        y: hero.offsetHeight + 20
+                    });
+                    
+                    gsap.to(particle, {
+                        y: -20,
+                        duration: Math.random() * 3 + 2,
+                        ease: "none",
+                        onComplete: function() {
+                            particle.remove();
+                        }
+                    });
+                    
+                    gsap.to(particle, {
+                        opacity: 0,
+                        duration: 0.5,
+                        delay: Math.random() * 2 + 1
+                    });
+                }
+            }
+            
+            // 파티클 생성
+            setInterval(createParticle, 500);
+            
+            // 페이지 로드 애니메이션
+            gsap.timeline()
+                .from('.problem-hero h1', { opacity: 0, y: 30, duration: 1, ease: "power2.out" })
+                .from('.problem-hero p', { opacity: 0, y: 20, duration: 0.8, ease: "power2.out" }, "-=0.5")
+                .from('.problem-hero .row > div', { 
+                    opacity: 0, 
+                    y: 20, 
+                    duration: 0.6, 
+                    stagger: 0.2, 
+                    ease: "power2.out" 
+                }, "-=0.3");
+        });
+    </script>
+</body>
+</html>
