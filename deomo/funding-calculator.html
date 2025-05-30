@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>정책자금 계산기 - 청년농업 원스톱</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'agri-green': '#2E7D32',
+                        'agri-blue': '#1976D2',
+                        'agri-orange': '#FF6B35',
+                        'agri-gray': '#F5F5F5'
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Pretendard', sans-serif; }
+        .calculator-card {
+            transition: all 0.3s ease;
+        }
+        .calculator-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        .safety-level {
+            background: linear-gradient(90deg, #ef4444 0%, #f59e0b 50%, #10b981 100%);
+        }
+        .result-highlight {
+            background: linear-gradient(135deg, #2E7D32 0%, #1976D2 100%);
+        }
+    </style>
+</head>
+<body class="bg-agri-gray min-h-screen">
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-4">
+                    <button onclick="goBack()" class="text-gray-400 hover:text-gray-600">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                        </svg>
+                    </button>
+                    <h1 class="text-xl font-bold text-agri-green">💰 정책자금 계산기</h1>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <div class="text-sm text-gray-600">김○○님</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- 안내 메시지 -->
+        <div class="bg-blue-50 border-l-4 border-blue-400 p-4 mb-8">
+            <div class="flex">
+                <div class="flex-shrink-0">
+                    <svg class="h-5 w-5 text-blue-400" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
+                </svg>
+                </div>
+                <div class="ml-3">
+                    <p class="text-sm text-blue-700">
+                        <strong>청년농업인 전용 계산기</strong> - 당신의 농업계획에 맞는 최적의 정책자금을 계산해드립니다. 
+                        모든 계산 결과는 실시간으로 농협과 연동되어 즉시 신청 가능합니다.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- 입력 폼 -->
+            <div class="lg:col-span-2">
+                <!-- 기본 정보 -->
+                <div class="calculator-card bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-6">
+                    <h2 class="text-lg font-semibold text-gray-900 mb-6">📋 기본 정보 입력</h2>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">농장 유형</label>
+                            <select id="farmType" onchange="calculateFunding()" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-agri-green focus:border-transparent">
+                                <option value="smart-greenhouse">스마트 온실 (파프리카)</option>
+                                <option value="hydroponic">수경재배 (딸기)</option>
+                                <option value="smart-livestock">스마트 축산</option>
+                                <option value="open-field">노지 재배</option>
+                                <option value="mushroom">버섯 재배</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">농장 규모 (평)</label>
+                            <input type="number" id="farmSize" value="1500" onchange="calculateFunding()" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-agri-green focus:border-transparent">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">예상 시설투자비 (만원)</label>
+                            <input type="number" id="facilityInvestment" value="20000" onchange="calculateFunding()" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-agri-green focus:border-transparent">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">연간 예상 매출 (만원)</label>
+                            <input type="number" id="expectedRevenue" value="32000" onchange="calculateFunding()" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-agri-green focus:border-transparent">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">자기자본 (만원)</label>
+                            <input type="number" id="ownCapital" value="5000" onchange="calculateFunding()" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-agri-green focus:border-transparent">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">농업 경험</label>
+                            <select id="experience" onchange="calculateFunding()" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-agri-green focus:border-transparent">
+                                <option value="beginner">초보 (1년 미만)</option>
+                                <option value="intermediate">중급 (1-3년)</option>
+                                <option value="advanced">고급 (3년 이상)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 세부 자금 계획 -->
+                <div class="calculator-card bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+                    <h2 class="text-lg font-semibold text-gray-900 mb-6">💸 세부 자금 계획</h2>
+                    
+                    <div class="space-y-4">
+                        <div class="grid grid-cols-3 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">토지 임대료 (월)</label>
+                                <input type="number" id="landRent" value="80" onchange="calculateFunding()" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-agri-green focus:border-transparent">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">인건비 (월)</label>
+                                <input type="number" id="laborCost" value="400" onchange="calculateFunding()" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-agri-green focus:border-transparent">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">기타 운영비 (월)</label>
+                                <input type="number" id="otherCosts" value="200" onchange="calculateFunding()" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-agri-green focus:border-transparent">
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">스마트팜 장비비 (만원)</label>
+                                <input type="number" id="smartEquipment" value="8000" onchange="calculateFunding()" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-agri-green focus:border-transparent">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">운영자금 필요기간 (개월)</label>
+                                <input type="number" id="operatingPeriod" value="6" onchange="calculateFunding()" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-agri-green focus:border-transparent">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 계산 결과 -->
+            <div class="space-y-6">
+                <!-- 총 지원 가능 자금 -->
+                <div class="result-highlight rounded-xl p-6 text-white">
+                    <h2 class="text-xl font-bold mb-4">💰 나의 지원가능 자금</h2>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                        <div class="text-center">
+                            <div class="text-2xl font-bold mb-1" id="totalSupport">4.0억원</div>
+                            <div class="text-sm opacity-90">총 지원한도</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-2xl font-bold mb-1" id="monthlyPayment">133만원</div>
+                            <div class="text-sm opacity-90">월 상환액</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-2xl font-bold mb-1" id="safetyLevel">매우안전</div>
+                            <div class="text-sm opacity-90">상환 안정성</div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white/20 rounded-lg p-4">
+                        <div class="flex items-center justify-between text-sm mb-2">
+                            <span>상환 안정성</span>
+                            <span id="safetyPercentage">95%</span>
+                        </div>
+                        <div class="w-full bg-white/30 rounded-full h-3">
+                            <div id="safetyBar" class="bg-yellow-300 h-3 rounded-full transition-all duration-1000" style="width: 95%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 자금 유형별 상세 -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-4">📊 자금 유형별 상세</h3>
+                    
+                    <div class="space-y-4">
+                        <!-- 창업자금 -->
+                        <div class="border border-green-200 rounded-lg p-4 bg-green-50">
+                            <div class="flex items-center justify-between mb-3">
+                                <h4 class="font-semibold text-gray-900">💵 창업자금</h4>
+                                <span class="text-lg font-bold text-green-600" id="startupFund">1.5억원</span>
+                            </div>
+                            <div class="grid grid-cols-2 gap-4 text-sm">
+                                <div>
+                                    <span class="text-gray-600">한도: </span>
+                                    <span class="font-medium">최대 3억원</span>
+                                </div>
+                                <div>
+                                    <span class="text-gray-600">금리: </span>
+                                    <span class="font-medium">무이자</span>
+                                </div>
+                                <div>
+                                    <span class="text-gray-600">기간: </span>
+                                    <span class="font-medium">5년</span>
+                                </div>
+                                <div>
+                                    <span class="text-gray-600">상환: </span>
+                                    <span class="font-medium">원금균등</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 시설자금 -->
+                        <div class="border border-blue-200 rounded-lg p-4 bg-blue-50">
+                            <div class="flex items-center justify-between mb-3">
+                                <h4 class="font-semibold text-gray-900">🏗️ 시설자금</h4>
+                                <span class="text-lg font-bold text-blue-600" id="facilityFund">2.0억원</span>
+                            </div>
+                            <div class="grid grid-cols-2 gap-4 text-sm">
+                                <div>
+                                    <span class="text-gray-600">한도: </span>
+                                    <span class="font-medium">최대 5억원</span>
+                                </div>
+                                <div>
+                                    <span class="text-gray-600">금리: </span>
+                                    <span class="font-medium">1.0%</span>
+                                </div>
+                                <div>
+                                    <span class="text-gray-600">기간: </span>
+                                    <span class="font-medium">10년</span>
+                                </div>
+                                <div>
+                                    <span class="text-gray-600">지원비율: </span>
+                                    <span class="font-medium">80%</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 운영자금 -->
+                        <div class="border border-orange-200 rounded-lg p-4 bg-orange-50">
+                            <div class="flex items-center justify-between mb-3">
+                                <h4 class="font-semibold text-gray-900">⚡ 운영자금</h4>
+                                <span class="text-lg font-bold text-orange-600" id="operatingFund">0.5억원</span>
+                            </div>
+                            <div class="grid grid-cols-2 gap-4 text-sm">
+                                <div>
+                                    <span class="text-gray-600">한도: </span>
+                                    <span class="font-medium">최대 1억원</span>
+                                </div>
+                                <div>
+                                    <span class="text-gray-600">금리: </span>
+                                    <span class="font-medium">2.0%</span>
+                                </div>
+                                <div>
+                                    <span class="text-gray-600">기간: </span>
+                                    <span class="font-medium">3년</span>
+                                </div>
+                                <div>
+                                    <span class="text-gray-600">용도: </span>
+                                    <span class="font-medium">운영비</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 수익성 분석 -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-4">📈 수익성 분석</h3>
+                    
+                    <div class="space-y-4">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="bg-gray-50 rounded-lg p-4">
+                                <div class="text-sm text-gray-600 mb-1">연간 예상 수익</div>
+                                <div class="text-xl font-bold text-green-600" id="annualProfit">3,200만원</div>
+                            </div>
+                            <div class="bg-gray-50 rounded-lg p-4">
+                                <div class="text-sm text-gray-600 mb-1">연간 상환액</div>
+                                <div class="text-xl font-bold text-blue-600" id="annualPayment">1,596만원</div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-green-50 border border-green-200 rounded-lg p-4">
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm font-medium text-gray-700">수익 대비 상환비율</span>
+                                <span class="text-lg font-bold text-green-600" id="paymentRatio">49.9%</span>
+                            </div>
+                            <div class="text-xs text-green-700 mt-2">
+                                💡 50% 이하는 매우 안전한 수준입니다
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 액션 버튼 -->
+                <div class="space-y-4">
+                    <button onclick="applyForFunding()" class="w-full bg-agri-green text-white py-3 px-6 rounded-lg hover:bg-green-700 transition font-semibold">
+                        🚀 정책자금 신청하기
+                    </button>
+                    
+                    <div class="grid grid-cols-2 gap-4">
+                        <button onclick="saveCalculation()" class="w-full bg-agri-blue text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition">
+                            💾 계산 결과 저장
+                        </button>
+                        <button onclick="shareCalculation()" class="w-full bg-gray-600 text-white py-2 px-4 rounded-lg hover:bg-gray-700 transition">
+                            📤 결과 공유
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 참고 정보 -->
+        <div class="mt-8 bg-yellow-50 border-l-4 border-yellow-400 p-6 rounded-r-lg">
+            <h3 class="text-lg font-semibold text-gray-900 mb-4">📋 신청 시 필요 서류</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                <div>
+                    <h4 class="font-medium text-gray-800 mb-2">기본 서류</h4>
+                    <ul class="space-y-1 text-gray-600">
+                        <li>✅ 청년농업인 증명서</li>
+                        <li>✅ 농업경영계획서</li>
+                        <li>✅ 자금계획서</li>
+                        <li>✅ 신용정보 동의서</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-medium text-gray-800 mb-2">추가 서류</h4>
+                    <ul class="space-y-1 text-gray-600">
+                        <li>✅ 농지 임대차 계약서</li>
+                        <li>✅ 시설 설치 계획서</li>
+                        <li>✅ 견적서 (3개 업체 이상)</li>
+                        <li>✅ 담보제공 동의서</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-4 text-xs text-yellow-800 bg-yellow-100 rounded-lg p-3">
+                💡 원스톱 플랫폼을 통해 신청하면 대부분의 서류가 자동으로 연동되어 
+                별도 제출이 불필요합니다!
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+
+        function calculateFunding() {
+            // 입력값 가져오기
+            const farmType = document.getElementById('farmType').value;
+            const farmSize = parseInt(document.getElementById('farmSize').value) || 0;
+            const facilityInvestment = parseInt(document.getElementById('facilityInvestment').value) || 0;
+            const expectedRevenue = parseInt(document.getElementById('expectedRevenue').value) || 0;
+            const ownCapital = parseInt(document.getElementById('ownCapital').value) || 0;
+            const experience = document.getElementById('experience').value;
+            
+            // 기본 계산 로직
+            let startupFundLimit = Math.min(facilityInvestment * 0.6, 30000); // 최대 3억
+            let facilityFundLimit = Math.min(facilityInvestment * 0.8, 50000); // 최대 5억
+            let operatingFundLimit = Math.min(farmSize * 30, 10000); // 최대 1억
+            
+            // 경험에 따른 조정
+            if (experience === 'beginner') {
+                startupFundLimit *= 0.8;
+                facilityFundLimit *= 0.8;
+            } else if (experience === 'advanced') {
+                startupFundLimit *= 1.1;
+                facilityFundLimit *= 1.1;
+            }
+            
+            // 실제 필요 자금 계산
+            const startupFund = Math.min(startupFundLimit, facilityInvestment * 0.4);
+            const facilityFund = Math.min(facilityFundLimit, facilityInvestment * 0.6);
+            const operatingFund = Math.min(operatingFundLimit, farmSize * 20);
+            
+            const totalSupport = startupFund + facilityFund + operatingFund;
+            
+            // 월 상환액 계산
+            const monthlyStartup = startupFund * 10000 / 60; // 5년, 무이자
+            const monthlyFacility = facilityFund * 10000 * 1.01 / 120; // 10년, 1%
+            const monthlyOperating = operatingFund * 10000 * 1.02 / 36; // 3년, 2%
+            const totalMonthlyPayment = (monthlyStartup + monthlyFacility + monthlyOperating) / 10000;
+            
+            // 수익성 분석
+            const annualPayment = totalMonthlyPayment * 12;
+            const annualProfit = expectedRevenue - (annualPayment * 10000);
+            const paymentRatio = (annualPayment / expectedRevenue) * 100;
+            
+            // 상환 안정성 계산
+            let safetyPercentage, safetyLevel, safetyColor;
+            if (paymentRatio < 30) {
+                safetyPercentage = 95;
+                safetyLevel = "매우안전";
+                safetyColor = "#10b981";
+            } else if (paymentRatio < 50) {
+                safetyPercentage = 80;
+                safetyLevel = "안전";
+                safetyColor = "#f59e0b";
+            } else if (paymentRatio < 70) {
+                safetyPercentage = 60;
+                safetyLevel = "보통";
+                safetyColor = "#ef4444";
+            } else {
+                safetyPercentage = 30;
+                safetyLevel = "위험";
+                safetyColor = "#dc2626";
+            }
+            
+            // 결과 업데이트
+            updateResults({
+                totalSupport: (totalSupport / 10000).toFixed(1),
+                monthlyPayment: Math.round(totalMonthlyPayment),
+                startupFund: (startupFund / 10000).toFixed(1),
+                facilityFund: (facilityFund / 10000).toFixed(1),
+                operatingFund: (operatingFund / 10000).toFixed(1),
+                annualProfit: Math.round(annualProfit / 10000),
+                annualPayment: Math.round(annualPayment),
+                paymentRatio: paymentRatio.toFixed(1),
+                safetyPercentage,
+                safetyLevel,
+                safetyColor
+            });
+        }
+
+        function updateResults(results) {
+            // 텍스트 업데이트
+            document.getElementById('totalSupport').textContent = results.totalSupport + '억원';
+            document.getElementById('monthlyPayment').textContent = results.monthlyPayment + '만원';
+            document.getElementById('safetyLevel').textContent = results.safetyLevel;
+            document.getElementById('safetyPercentage').textContent = results.safetyPercentage + '%';
+            
+            document.getElementById('startupFund').textContent = results.startupFund + '억원';
+            document.getElementById('facilityFund').textContent = results.facilityFund + '억원';
+            document.getElementById('operatingFund').textContent = results.operatingFund + '억원';
+            
+            document.getElementById('annualProfit').textContent = results.annualProfit + '만원';
+            document.getElementById('annualPayment').textContent = results.annualPayment + '만원';
+            document.getElementById('paymentRatio').textContent = results.paymentRatio + '%';
+            
+            // 안전성 바 업데이트
+            const safetyBar = document.getElementById('safetyBar');
+            safetyBar.style.width = results.safetyPercentage + '%';
+            safetyBar.style.backgroundColor = results.safetyColor;
+        }
+
+        function applyForFunding() {
+            alert('정책자금 신청을 시작합니다!\n\n🚀 다음 단계:\n1. 계산 결과 확인\n2. 필요 서류 자동 생성\n3. 농협 심사 진행\n4. 승인 후 자금 지급\n\n예상 처리기간: 2-3주');
+        }
+
+        function saveCalculation() {
+            alert('계산 결과가 저장되었습니다! 💾\n\n저장된 내용:\n- 입력한 모든 조건\n- 계산 결과\n- 신청 가능 자금 내역\n\n언제든지 다시 불러와서 수정할 수 있습니다.');
+        }
+
+        function shareCalculation() {
+            alert('계산 결과를 공유합니다! 📤\n\n공유 방법:\n- 카카오톡 공유\n- 이메일 전송\n- PDF 다운로드\n- 링크 복사\n\n멘토나 가족과 상담 시 활용하세요!');
+        }
+
+        // 페이지 로드 시 초기 계산
+        document.addEventListener('DOMContentLoaded', function() {
+            calculateFunding();
+            
+            // 애니메이션 효과
+            const cards = document.querySelectorAll('.calculator-card, .result-highlight');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 200);
+            });
+        });
+    </script>
+</body>
+</html>

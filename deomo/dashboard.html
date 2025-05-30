@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>개인 대시보드 - 청년농업 원스톱</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'agri-green': '#2E7D32',
+                        'agri-blue': '#1976D2',
+                        'agri-orange': '#FF6B35',
+                        'agri-gray': '#F5F5F5'
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Pretendard', sans-serif; }
+        .progress-bar {
+            background: linear-gradient(90deg, #2E7D32 0%, #FF6B35 100%);
+        }
+        .card-hover {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-agri-gray min-h-screen">
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <h1 class="text-xl font-bold text-agri-green">🌱 청년농업 원스톱</h1>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button class="relative p-2 text-gray-400 hover:text-gray-500">
+                        <span class="sr-only">알림</span>
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-5-5V9A6 6 0 105 9v3l-5 5h5m5 0v1a3 3 0 01-6 0v-1m6 0H9" />
+                        </svg>
+                        <span class="absolute top-0 right-0 block h-2 w-2 bg-red-400 rounded-full"></span>
+                    </button>
+                    <div class="flex items-center space-x-3">
+                        <div class="w-8 h-8 bg-agri-green rounded-full flex items-center justify-center text-white font-semibold text-sm">
+                            김
+                        </div>
+                        <div class="hidden md:block">
+                            <div class="text-sm font-medium text-gray-900">김○○님</div>
+                            <div class="text-xs text-gray-500">청년농업인</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Welcome Section -->
+        <div class="mb-8">
+            <h2 class="text-2xl font-bold text-gray-900 mb-2">안녕하세요, 김○○님! 👋</h2>
+            <p class="text-gray-600">스마트농업 창업 여정을 함께 시작해보세요</p>
+        </div>
+
+        <!-- Progress Overview -->
+        <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-8">
+            <div class="flex items-center justify-between mb-6">
+                <h3 class="text-lg font-semibold text-gray-900">🎯 전체 진행 현황</h3>
+                <span class="text-sm text-gray-500">예상 완료: 2025년 8월 15일</span>
+            </div>
+            
+            <!-- Progress Bar -->
+            <div class="mb-6">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-sm font-medium text-gray-700">전체 진행률</span>
+                    <span class="text-2xl font-bold text-agri-green">80%</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-3">
+                    <div class="progress-bar h-3 rounded-full" style="width: 80%"></div>
+                </div>
+                <div class="flex justify-between text-xs text-gray-500 mt-2">
+                    <span>4/5 단계 완료</span>
+                    <span>약 3주 남음</span>
+                </div>
+            </div>
+
+            <!-- Current Status -->
+            <div class="bg-blue-50 rounded-lg p-4 border-l-4 border-blue-400">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <svg class="h-5 w-5 text-blue-400" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                    <div class="ml-3">
+                        <h4 class="text-sm font-medium text-blue-800">현재 단계: 농지 임대차 계약 진행 중</h4>
+                        <p class="text-sm text-blue-700">농어촌공사에서 최적 농지 3곳을 추천받았습니다. 현장 확인 후 계약을 진행해주세요.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Main Dashboard Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Left Column -->
+            <div class="lg:col-span-2 space-y-8">
+                <!-- Step Timeline -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-6">📋 단계별 진행 상황</h3>
+                    
+                    <div class="space-y-6">
+                        <!-- Step 1 - 완료 -->
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0">
+                                <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
+                                    <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="ml-4 flex-1">
+                                <div class="flex items-center justify-between">
+                                    <h4 class="text-sm font-medium text-gray-900">농업경영체 등록</h4>
+                                    <span class="text-xs text-green-600 bg-green-100 px-2 py-1 rounded-full">완료</span>
+                                </div>
+                                <p class="text-xs text-gray-500 mt-1">2025.05.30 승인완료</p>
+                                <p class="text-sm text-gray-600 mt-2">✅ 농관원 승인 완료 • 농업경영체 등록번호: 1234567890</p>
+                            </div>
+                        </div>
+
+                        <!-- Step 2 - 완료 -->
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0">
+                                <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
+                                    <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="ml-4 flex-1">
+                                <div class="flex items-center justify-between">
+                                    <h4 class="text-sm font-medium text-gray-900">스마트농업 교육 이수</h4>
+                                    <span class="text-xs text-green-600 bg-green-100 px-2 py-1 rounded-full">완료</span>
+                                </div>
+                                <p class="text-xs text-gray-500 mt-1">2025.06.20 수료</p>
+                                <p class="text-sm text-gray-600 mt-2">✅ 8주 과정 수료 • 수료증 발급 완료 • 멘토: 박선배님</p>
+                            </div>
+                        </div>
+
+                        <!-- Step 3 - 진행중 -->
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0">
+                                <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center animate-pulse">
+                                    <div class="w-3 h-3 bg-white rounded-full"></div>
+                                </div>
+                            </div>
+                            <div class="ml-4 flex-1">
+                                <div class="flex items-center justify-between">
+                                    <h4 class="text-sm font-medium text-gray-900">농지 임대 계약</h4>
+                                    <span class="text-xs text-blue-600 bg-blue-100 px-2 py-1 rounded-full">진행중</span>
+                                </div>
+                                <p class="text-xs text-gray-500 mt-1">3일 경과 / 평균 7일</p>
+                                <p class="text-sm text-gray-600 mt-2">🔄 농지 3곳 추천받음 • 현장 확인 예정 • 계약서 검토 중</p>
+                                <div class="mt-3">
+                                    <button onclick="viewFarmRecommendations()" class="text-xs bg-blue-600 text-white px-3 py-1 rounded-md hover:bg-blue-700 transition">
+                                        추천 농지 보기
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Step 4 - 대기중 -->
+                        <div class="flex items-start opacity-60">
+                            <div class="flex-shrink-0">
+                                <div class="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center">
+                                    <div class="w-3 h-3 bg-white rounded-full"></div>
+                                </div>
+                            </div>
+                            <div class="ml-4 flex-1">
+                                <div class="flex items-center justify-between">
+                                    <h4 class="text-sm font-medium text-gray-900">정책자금 신청</h4>
+                                    <span class="text-xs text-gray-600 bg-gray-100 px-2 py-1 rounded-full">대기중</span>
+                                </div>
+                                <p class="text-xs text-gray-500 mt-1">농지확정 후 진행</p>
+                                <p class="text-sm text-gray-600 mt-2">⏳ 농지 계약 완료 후 자동 진행 예정</p>
+                            </div>
+                        </div>
+
+                        <!-- Step 5 - 대기중 -->
+                        <div class="flex items-start opacity-60">
+                            <div class="flex-shrink-0">
+                                <div class="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center">
+                                    <div class="w-3 h-3 bg-white rounded-full"></div>
+                                </div>
+                            </div>
+                            <div class="ml-4 flex-1">
+                                <div class="flex items-center justify-between">
+                                    <h4 class="text-sm font-medium text-gray-900">창업 완료</h4>
+                                    <span class="text-xs text-gray-600 bg-gray-100 px-2 py-1 rounded-full">대기중</span>
+                                </div>
+                                <p class="text-xs text-gray-500 mt-1">예상 완료: 2025.08.15</p>
+                                <p class="text-sm text-gray-600 mt-2">🎯 모든 절차 완료 후 농장 운영 시작</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Quick Actions -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-6">⚡ 빠른 실행</h3>
+                    
+                    <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+                        <button onclick="goToApplication()" class="card-hover flex flex-col items-center p-4 rounded-lg border border-gray-200 hover:border-agri-green transition">
+                            <div class="w-12 h-12 bg-agri-green rounded-lg flex items-center justify-center text-white mb-3">
+                                📝
+                            </div>
+                            <span class="text-sm font-medium text-gray-900">원스톱 신청</span>
+                        </button>
+                        
+                        <button onclick="goToEducation()" class="card-hover flex flex-col items-center p-4 rounded-lg border border-gray-200 hover:border-agri-blue transition">
+                            <div class="w-12 h-12 bg-agri-blue rounded-lg flex items-center justify-center text-white mb-3">
+                                🎓
+                            </div>
+                            <span class="text-sm font-medium text-gray-900">교육과정</span>
+                        </button>
+                        
+                        <button onclick="goToFarmSearch()" class="card-hover flex flex-col items-center p-4 rounded-lg border border-gray-200 hover:border-agri-orange transition">
+                            <div class="w-12 h-12 bg-agri-orange rounded-lg flex items-center justify-center text-white mb-3">
+                                🗺️
+                            </div>
+                            <span class="text-sm font-medium text-gray-900">농지검색</span>
+                        </button>
+                        
+                        <button onclick="goToFundingCalculator()" class="card-hover flex flex-col items-center p-4 rounded-lg border border-gray-200 hover:border-purple-500 transition">
+                            <div class="w-12 h-12 bg-purple-500 rounded-lg flex items-center justify-center text-white mb-3">
+                                💰
+                            </div>
+                            <span class="text-sm font-medium text-gray-900">자금계산</span>
+                        </button>
+                        
+                        <button onclick="goToCommunity()" class="card-hover flex flex-col items-center p-4 rounded-lg border border-gray-200 hover:border-pink-500 transition">
+                            <div class="w-12 h-12 bg-pink-500 rounded-lg flex items-center justify-center text-white mb-3">
+                                👥
+                            </div>
+                            <span class="text-sm font-medium text-gray-900">커뮤니티</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column -->
+            <div class="space-y-8">
+                <!-- 다음 할일 -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-4">📌 다음 할일</h3>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-start space-x-3 p-3 bg-orange-50 rounded-lg border-l-4 border-orange-400">
+                            <div class="flex-shrink-0 w-2 h-2 bg-orange-400 rounded-full mt-2"></div>
+                            <div class="flex-1">
+                                <h4 class="text-sm font-medium text-gray-900">농지 현장 확인</h4>
+                                <p class="text-xs text-gray-600 mt-1">추천받은 3곳 농지 중 최종 선택</p>
+                                <p class="text-xs text-orange-600 mt-1">🕒 이번 주 내 완료 권장</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-3 p-3 bg-blue-50 rounded-lg border-l-4 border-blue-400">
+                            <div class="flex-shrink-0 w-2 h-2 bg-blue-400 rounded-full mt-2"></div>
+                            <div class="flex-1">
+                                <h4 class="text-sm font-medium text-gray-900">멘토링 미팅</h4>
+                                <p class="text-xs text-gray-600 mt-1">박선배님과 월례 상담</p>
+                                <p class="text-xs text-blue-600 mt-1">📅 7월 5일 (금) 오후 2시</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-3 p-3 bg-green-50 rounded-lg border-l-4 border-green-400">
+                            <div class="flex-shrink-0 w-2 h-2 bg-green-400 rounded-full mt-2"></div>
+                            <div class="flex-1">
+                                <h4 class="text-sm font-medium text-gray-900">자금계획서 준비</h4>
+                                <p class="text-xs text-gray-600 mt-1">농지 확정 후 즉시 제출</p>
+                                <p class="text-xs text-green-600 mt-1">📋 템플릿 다운로드 완료</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button class="w-full mt-4 text-sm text-agri-blue hover:text-blue-800 font-medium">
+                        모든 할일 보기 →
+                    </button>
+                </div>
+                <!-- 최근 알림 -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-semibold text-gray-900">🔔 최근 알림</h3>
+                        <span class="text-xs bg-red-100 text-red-600 px-2 py-1 rounded-full">3</span>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <div class="flex items-start space-x-3 p-3 bg-blue-50 rounded-lg">
+                            <div class="flex-shrink-0 w-2 h-2 bg-blue-500 rounded-full mt-2"></div>
+                            <div class="flex-1">
+                                <p class="text-sm text-gray-900">농지 추천 완료</p>
+                                <p class="text-xs text-gray-600 mt-1">화성, 김제, 밀양 지역 3곳 추천</p>
+                                <p class="text-xs text-gray-500 mt-1">1시간 전</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-3 p-3 bg-green-50 rounded-lg">
+                            <div class="flex-shrink-0 w-2 h-2 bg-green-500 rounded-full mt-2"></div>
+                            <div class="flex-1">
+                                <p class="text-sm text-gray-900">교육과정 수료증 발급</p>
+                                <p class="text-xs text-gray-600 mt-1">스마트농업 기초과정 수료</p>
+                                <p class="text-xs text-gray-500 mt-1">2일 전</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-3 p-3 bg-yellow-50 rounded-lg">
+                            <div class="flex-shrink-0 w-2 h-2 bg-yellow-500 rounded-full mt-2"></div>
+                            <div class="flex-1">
+                                <p class="text-sm text-gray-900">청년농업인 네트워킹 행사</p>
+                                <p class="text-xs text-gray-600 mt-1">7월 청년농업인 만남의 날</p>
+                                <p class="text-xs text-gray-500 mt-1">3일 전</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button class="w-full mt-4 text-sm text-agri-blue hover:text-blue-800 font-medium">
+                        모든 알림 보기 →
+                    </button>
+                </div>
+
+                <!-- 나의 농장 정보 -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-4">🏡 나의 농장 계획</h3>
+                    
+                    <div class="space-y-4">
+                        <div class="bg-gray-50 rounded-lg p-4">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-sm font-medium text-gray-700">예정 작물</span>
+                                <span class="text-sm text-agri-green font-semibold">파프리카</span>
+                            </div>
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-sm font-medium text-gray-700">재배 면적</span>
+                                <span class="text-sm text-gray-900">0.5ha (1,500평)</span>
+                            </div>
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-sm font-medium text-gray-700">예상 매출</span>
+                                <span class="text-sm text-gray-900">연 3.2억원</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm font-medium text-gray-700">기술 도입</span>
+                                <span class="text-sm text-gray-900">IoT + AI 환경제어</span>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gradient-to-r from-green-50 to-blue-50 rounded-lg p-4">
+                            <h4 class="text-sm font-semibold text-gray-900 mb-2">💰 지원 가능 자금</h4>
+                            <div class="space-y-2 text-sm">
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">창업자금</span>
+                                    <span class="font-medium">1.5억원</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">시설자금</span>
+                                    <span class="font-medium">2.0억원</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">운영자금</span>
+                                    <span class="font-medium">0.5억원</span>
+                                </div>
+                                <div class="border-t border-gray-200 pt-2 flex justify-between font-semibold">
+                                    <span>총 지원한도</span>
+                                    <span class="text-agri-green">4.0억원</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button onclick="goToFundingCalculator()" class="w-full mt-4 bg-agri-green text-white py-2 px-4 rounded-lg hover:bg-green-700 transition text-sm font-medium">
+                        자세한 자금계획 보기
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // 농지 추천 보기
+        function viewFarmRecommendations() {
+            window.location.href = 'farm-search.html';
+        }
+
+        // 빠른 실행 메뉴 함수들
+        function goToApplication() {
+            alert('원스톱 신청 페이지로 이동합니다.');
+        }
+
+        function goToEducation() {
+            alert('교육과정 페이지로 이동합니다.');
+        }
+
+        function goToFarmSearch() {
+            window.location.href = 'farm-search.html';
+        }
+
+        function goToFundingCalculator() {
+            window.location.href = 'funding-calculator.html';
+        }
+
+        function goToCommunity() {
+            alert('커뮤니티 페이지로 이동합니다.');
+        }
+
+        // 페이지 로드 시 애니메이션 효과
+        document.addEventListener('DOMContentLoaded', function() {
+            // 카드들에 순차적 애니메이션 적용
+            const cards = document.querySelectorAll('.bg-white');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+
+            // 진행률 바 애니메이션
+            setTimeout(() => {
+                const progressBar = document.querySelector('.progress-bar');
+                if (progressBar) {
+                    progressBar.style.width = '0%';
+                    progressBar.style.transition = 'width 2s ease-in-out';
+                    setTimeout(() => {
+                        progressBar.style.width = '80%';
+                    }, 500);
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
