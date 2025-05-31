@@ -197,15 +197,8 @@ function performSignup() {
 
 // 원스톱 신청 시작
 function startApplication() {
-    // 로그인 체크 시뮬레이션
-    if (Math.random() > 0.5) {
-        // 로그인된 상태
-        window.location.href = 'application.html';
-    } else {
-        // 미로그인 상태
-        alert('로그인이 필요한 서비스입니다.');
-        openLogin();
-    }
+    // 데모 환경에서는 바로 신청 페이지로 이동
+    window.location.href = 'application.html';
 }
 
 // 더 많은 성공사례 보기
