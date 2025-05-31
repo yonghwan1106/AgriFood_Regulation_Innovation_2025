@@ -3,1113 +3,406 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="청년농업인 스마트농업 창업 원스톱 플랫폼 구축 - 2025년 농식품 규제혁신 공모전 제안">
-    <meta name="keywords" content="청년농업, 스마트농업, 원스톱플랫폼, 농식품규제혁신, 농업정책">
-    <meta name="author" content="박용환 - 크리에이티브 넥서스">
-    
-    <title>청년농업인 스마트농업 창업 원스톱 플랫폼 | 농식품 규제혁신 제안</title>
-    
-    <!-- 파비콘 -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌱</text></svg>">
-    
-    <!-- 폰트 -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-    
-    <!-- 아이콘 -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    
-    <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    
-    <!-- 커스텀 CSS -->
-    <link href="assets/css/common.css" rel="stylesheet">
-    <link href="assets/css/components.css" rel="stylesheet">
-    
-    <!-- Open Graph -->
-    <meta property="og:title" content="청년농업인 스마트농업 창업 원스톱 플랫폼">
-    <meta property="og:description" content="10개월 → 5개월, 537억원 경제효과. 데이터 기반 정책 제안">
-    <meta property="og:type" content="website">
-    <meta property="og:image" content="https://via.placeholder.com/1200x630/2E7D32/FFFFFF?text=Smart+Farm+Platform">
-    
-    <!-- 구조화된 데이터 -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "WebPage",
-        "name": "청년농업인 스마트농업 창업 원스톱 플랫폼",
-        "description": "농식품 규제혁신을 통한 청년농업인 지원 정책 제안",
-        "author": {
-            "@type": "Person",
-            "name": "박용환",
-            "affiliation": "크리에이티브 넥서스"
-        },
-        "datePublished": "2025-05-28",
-        "keywords": "청년농업, 스마트농업, 규제혁신, 원스톱플랫폼"
-    }
+    <title>청년농업인 스마트농업 창업 원스톱 플랫폼</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'agri-green': '#2E7D32',
+                        'agri-blue': '#1976D2',
+                        'agri-orange': '#FF6B35',
+                        'agri-gray': '#F5F5F5'
+                    },
+                    fontFamily: {
+                        'pretendard': ['Pretendard', 'sans-serif']
+                    }
+                }
+            }
+        }
     </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Pretendard', sans-serif; }
+        .gradient-bg {
+            background: linear-gradient(135deg, #2E7D32 0%, #1976D2 100%);
+        }
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        .step-number {
+            background: linear-gradient(135deg, #FF6B35 0%, #E65100 100%);
+        }
+    </style>
 </head>
-<body>
-    <!-- 네비게이션 -->
-    <nav class="navbar navbar-expand-lg">
-        <div class="container">
-            <a class="navbar-brand" href="index.html">
-                <i class="fas fa-seedling me-2"></i>
-                스마트농업 플랫폼
-            </a>
-            
-            <button class="navbar-toggler" type="button">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            
-            <div class="navbar-nav ms-auto">
-                <a class="nav-link" href="index.html">홈</a>
-                <a class="nav-link" href="data-analysis.html">데이터 분석</a>
-                <a class="nav-link" href="problem-definition.html">문제점 정의</a>
-                <a class="nav-link" href="solution-overview.html">해결방안</a>
-                <a class="nav-link" href="expected-results.html">기대효과</a>
-                <a class="nav-link" href="legal-framework.html">법령 개정안</a>
-            </div>
-        </div>
-    </nav>
-
-    <!-- 메인 히어로 섹션 -->
-    <header class="page-header">
-        <div class="container text-center">
-            <h1>청년농업인 스마트농업 창업<br>원스톱 플랫폼 구축</h1>
-            <p class="lead">디지털 농정으로 농업 혁신 가속화<br>10개월 → 5개월, 537억원 경제효과</p>
-            
-            <div class="row mt-5">
-                <div class="col-md-3 col-6 mb-3">
-                    <div class="stat-highlight">
-                        <div class="stat-number text-white" data-target="86.1">0</div>
-                        <div class="stat-label">청년농업 관심도</div>
+<body class="font-pretendard bg-white">
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <h1 class="text-xl font-bold text-agri-green">🌱 청년농업 원스톱 (데모화면)</h1>
                     </div>
                 </div>
-                <div class="col-md-3 col-6 mb-3">
-                    <div class="stat-highlight">
-                        <div class="stat-number text-white" data-target="537">0</div>
-                        <div class="stat-label">경제효과 (억원)</div>
+                <nav class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#about" class="text-gray-600 hover:text-agri-green px-3 py-2 rounded-md text-sm font-medium transition"> </a>
+                        <a href="#process" class="text-gray-600 hover:text-agri-green px-3 py-2 rounded-md text-sm font-medium transition">진행 절차</a>
+                        <a href="#success" class="text-gray-600 hover:text-agri-green px-3 py-2 rounded-md text-sm font-medium transition">성공 사례</a>
+                        <a href="#support" class="text-gray-600 hover:text-agri-green px-3 py-2 rounded-md text-sm font-medium transition">지원 혜택</a>
                     </div>
+                </nav>
+                <div class="flex items-center space-x-4">
+                    <button onclick="openLogin()" class="text-agri-blue hover:text-blue-800 px-4 py-2 rounded-md text-sm font-medium transition">로그인</button>
+                    <button onclick="openSignup()" class="bg-agri-orange hover:bg-orange-600 text-white px-6 py-2 rounded-lg text-sm font-medium transition shadow-md">회원가입</button>
                 </div>
-                <div class="col-md-3 col-6 mb-3">
-                    <div class="stat-highlight">
-                        <div class="stat-number text-white" data-target="900">0</div>
-                        <div class="stat-label">일자리 창출 (개)</div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-6 mb-3">
-                    <div class="stat-highlight">
-                        <div class="stat-number text-white" data-target="50">0</div>
-                        <div class="stat-label">기간 단축 (%)</div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="mt-4">
-                <a href="data-analysis.html" class="btn btn-primary btn-lg me-3">
-                    <i class="fas fa-chart-line me-2"></i>자세히 보기
-                </a>
-                <a href="legal-framework.html" class="btn btn-secondary btn-lg">
-                    <i class="fas fa-balance-scale me-2"></i>법령 개정안 보기
-                </a>
-            </div>
-            
-            <div class="breadcrumb mt-4">
-                <span class="breadcrumb-item">2025년 농식품 규제혁신 공모전</span>
-                <span class="breadcrumb-item">규제개선 과제 제안 부문</span>
             </div>
         </div>
     </header>
 
-    <!-- 프로젝트 개요 -->
-    <section class="section bg-white">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <h2>프로젝트 개요</h2>
-                    <p class="lead">네이버 데이터랩 3년간 빅데이터 분석을 통해 도출한 <strong>청년농업인 스마트농업 창업 원스톱 플랫폼</strong> 구축 제안</p>
-                    
-                    <div class="key-points mt-4">
-                        <div class="point-item">
-                            <i class="fas fa-database text-primary"></i>
-                            <div>
-                                <strong>데이터 기반 아이디어</strong>
-                                <p>네이버 검색 트렌드 3년간 분석으로 정책 수요 검증</p>
-                            </div>
-                        </div>
-                        <div class="point-item">
-                            <i class="fas fa-user-check text-success"></i>
-                            <div>
-                                <strong>현장사례 중심</strong>
-                                <p>실제 청년농업인 창업 과정의 문제점과 해결방안</p>
-                            </div>
-                        </div>
-                        <div class="point-item">
-                            <i class="fas fa-balance-scale text-accent"></i>
-                            <div>
-                                <strong>구체적 법령 개정안</strong>
-                                <p>3개 법령의 상세한 개정안과 실행 방안</p>
-                            </div>
-                        </div>
-                        <div class="point-item">
-                            <i class="fas fa-calculator text-warning"></i>
-                            <div>
-                                <strong>정량적 효과 분석</strong>
-                                <p>537억원 경제효과와 900개 일자리 창출 근거</p>
-                            </div>
-                        </div>
+    <!-- Hero Section -->
+    <section class="gradient-bg text-white py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+                    청년농업 창업,<br>
+                    <span class="text-yellow-300">이제 5개월이면 충분합니다</span>
+                </h1>
+                <p class="text-xl md:text-2xl mb-8 text-blue-100 max-w-3xl mx-auto">
+                    복잡했던 5개 기관 업무를 하나로 통합한 원스톱 플랫폼으로<br>
+                    당신의 스마트농업 꿈을 현실로 만들어보세요
+                </p>
+                
+                <!-- 핵심 성과지표 -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12 mb-12">
+                    <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6 text-center">
+                        <div class="text-3xl font-bold text-yellow-300 mb-2">90%</div>
+                        <div class="text-sm text-blue-100">창업 성공률</div>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6 text-center">
+                        <div class="text-3xl font-bold text-yellow-300 mb-2">5개월</div>
+                        <div class="text-sm text-blue-100">평균 창업기간</div>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6 text-center">
+                        <div class="text-3xl font-bold text-yellow-300 mb-2">1,200명</div>
+                        <div class="text-sm text-blue-100">누적 이용자</div>
                     </div>
                 </div>
-                <div class="col-lg-6">
-                    <div class="before-after-container">
-                        <h3 class="text-center mb-4">창업 과정 혁신</h3>
-                        
-                        <div class="comparison-cards">
-                            <!-- Before Card -->
-                            <div class="comparison-card before-card">
-                                <div class="card-header">
-                                    <div class="status-icon">
-                                        <i class="fas fa-hourglass-half"></i>
-                                    </div>
-                                    <h4>Before</h4>
-                                    <p class="subtitle">현재 복잡한 창업 과정</p>
-                                </div>
-                                
-                                <div class="card-content">
-                                    <div class="metric">
-                                        <div class="metric-icon">
-                                            <i class="fas fa-calendar-alt"></i>
-                                        </div>
-                                        <div class="metric-info">
-                                            <span class="metric-number">10개월</span>
-                                            <span class="metric-label">창업 소요기간</span>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="metric">
-                                        <div class="metric-icon">
-                                            <i class="fas fa-building"></i>
-                                        </div>
-                                        <div class="metric-info">
-                                            <span class="metric-number">5개 기관</span>
-                                            <span class="metric-label">방문 필요기관</span>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="metric">
-                                        <div class="metric-icon">
-                                            <i class="fas fa-won-sign"></i>
-                                        </div>
-                                        <div class="metric-info">
-                                            <span class="metric-number">2,980만원</span>
-                                            <span class="metric-label">총 창업비용</span>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="metric">
-                                        <div class="metric-icon">
-                                            <i class="fas fa-file-alt"></i>
-                                        </div>
-                                        <div class="metric-info">
-                                            <span class="metric-number">47개</span>
-                                            <span class="metric-label">제출 서류</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <!--div class="pain-points">
-                                    <h5><i class="fas fa-exclamation-triangle me-2"></i>주요 애로사항</h5>
-                                    <ul>
-                                        <li>복잡한 인허가 절차</li>
-                                        <li>기관별 중복 서류 제출</li>
-                                        <li>정보 부족으로 인한 지연</li>
-                                        <li>높은 진입장벽</li>
-                                    </ul>
-                                </div-->
-                            </div>
-                            
-                            <!-- 변화 화살표 -->
-                            <div class="transformation-arrow">
-                                <div class="arrow-container">
-                                    <div class="arrow-line"></div>
-                                    <div class="arrow-head">
-                                        <i class="fas fa-arrow-right"></i>
-                                    </div>
-                                    <div class="arrow-text">원스톱 플랫폼</div>
-                                </div>
-                            </div>
-                            
-                            <!-- After Card -->
-                            <div class="comparison-card after-card">
-                                <div class="card-header">
-                                    <div class="status-icon">
-                                        <i class="fas fa-rocket"></i>
-                                    </div>
-                                    <h4>After</h4>
-                                    <p class="subtitle">혁신된 원스톱 시스템</p>
-                                </div>
-                                
-                                <div class="card-content">
-                                    <div class="metric improved">
-                                        <div class="metric-icon">
-                                            <i class="fas fa-calendar-check"></i>
-                                        </div>
-                                        <div class="metric-info">
-                                            <span class="metric-number">5개월</span>
-                                            <span class="metric-label">창업 소요기간</span>
-                                            <span class="improvement">50% 단축</span>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="metric improved">
-                                        <div class="metric-icon">
-                                            <i class="fas fa-desktop"></i>
-                                        </div>
-                                        <div class="metric-info">
-                                            <span class="metric-number">온라인</span>
-                                            <span class="metric-label">원스톱 처리</span>
-                                            <span class="improvement">기관 방문 불필요</span>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="metric improved">
-                                        <div class="metric-icon">
-                                            <i class="fas fa-piggy-bank"></i>
-                                        </div>
-                                        <div class="metric-info">
-                                            <span class="metric-number">1,480만원</span>
-                                            <span class="metric-label">총 창업비용</span>
-                                            <span class="improvement">1,500만원 절약</span>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="metric improved">
-                                        <div class="metric-icon">
-                                            <i class="fas fa-file-check"></i>
-                                        </div>
-                                        <div class="metric-info">
-                                            <span class="metric-number">2개</span>
-                                            <span class="metric-label">제출 서류</span>
-                                            <span class="improvement">96% 감소</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <!--div class="benefits">
-                                    <h5><i class="fas fa-check-circle me-2"></i>핵심 개선효과</h5>
-                                    <ul>
-                                        <li>통합 온라인 플랫폼</li>
-                                        <li>AI 기반 맞춤 가이드</li>
-                                        <li>실시간 진행상황 추적</li>
-                                        <li>전문가 1:1 컨설팅</li>
-                                    </ul>
-                                </div-->
-                            </div>
+
+                <button onclick="startApplication()" class="bg-agri-orange hover:bg-orange-600 text-white px-8 py-4 rounded-lg text-lg font-semibold transition transform hover:scale-105 shadow-lg">
+                    🚀 데모 시현하기
+                </button>
+                
+                <div class="mt-8 text-sm text-blue-100">
+                    ✅ 무료 상담 • ✅ 맞춤형 지원 • ✅ 전문가 멘토링
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="process" class="py-20 bg-agri-gray">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                    간단한 6단계로 완성하는 창업
+                </h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                    기존 10개월이 걸리던 복잡한 절차를 5개월로 단축했습니다
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Step 1 -->
+                <div class="card-hover bg-white rounded-xl p-8 text-center shadow-md">
+                    <div class="step-number w-16 h-16 rounded-full flex items-center justify-center text-white font-bold text-xl mx-auto mb-6">1</div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">원스톱 신청</h3>
+                    <p class="text-gray-600 mb-4">5개 기관 업무를 한 번에 신청하여 시간과 비용을 절약하세요</p>
+                    <div class="text-sm text-agri-blue font-medium">⏱️ 소요시간: 1일</div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="card-hover bg-white rounded-xl p-8 text-center shadow-md">
+                    <div class="step-number w-16 h-16 rounded-full flex items-center justify-center text-white font-bold text-xl mx-auto mb-6">2</div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">통합 심사</h3>
+                    <p class="text-gray-600 mb-4">농관원, 농어촌공사 등 관련 기관이 동시에 심사를 진행합니다</p>
+                    <div class="text-sm text-agri-blue font-medium">⏱️ 소요시간: 2주</div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="card-hover bg-white rounded-xl p-8 text-center shadow-md">
+                    <div class="step-number w-16 h-16 rounded-full flex items-center justify-center text-white font-bold text-xl mx-auto mb-6">3</div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">스마트농업 교육</h3>
+                    <p class="text-gray-600 mb-4">IoT, AI 등 최신 기술을 활용한 실무 중심 교육 과정</p>
+                    <div class="text-sm text-agri-blue font-medium">⏱️ 소요시간: 8주</div>
+                </div>
+                <!-- Step 4 -->
+                <div class="card-hover bg-white rounded-xl p-8 text-center shadow-md">
+                    <div class="step-number w-16 h-16 rounded-full flex items-center justify-center text-white font-bold text-xl mx-auto mb-6">4</div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">농지 확보</h3>
+                    <p class="text-gray-600 mb-4">AI 추천 시스템으로 최적의 농지를 찾고 계약을 체결합니다</p>
+                    <div class="text-sm text-agri-blue font-medium">⏱️ 소요시간: 3주</div>
+                </div>
+
+                <!-- Step 5 -->
+                <div class="card-hover bg-white rounded-xl p-8 text-center shadow-md">
+                    <div class="step-number w-16 h-16 rounded-full flex items-center justify-center text-white font-bold text-xl mx-auto mb-6">5</div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">정책자금 지원</h3>
+                    <p class="text-gray-600 mb-4">최대 5억원까지 저금리 정책자금을 지원받을 수 있습니다</p>
+                    <div class="text-sm text-agri-blue font-medium">⏱️ 소요시간: 2주</div>
+                </div>
+
+                <!-- Step 6 -->
+                <div class="card-hover bg-white rounded-xl p-8 text-center shadow-md">
+                    <div class="step-number w-16 h-16 rounded-full flex items-center justify-center text-white font-bold text-xl mx-auto mb-6">6</div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">창업 완료</h3>
+                    <p class="text-gray-600 mb-4">멘토링과 지속적인 지원으로 성공적인 농업 경영을 시작하세요</p>
+                    <div class="text-sm text-agri-green font-medium">🎉 창업 성공!</div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <div class="bg-white rounded-xl p-8 max-w-4xl mx-auto shadow-md">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">💡 혁신 포인트</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
+                        <div>
+                            <span class="text-red-500 font-semibold">기존 방식:</span> 5개 기관 개별 방문 → 10개월 소요<br>
+                            <span class="text-agri-green font-semibold">원스톱 방식:</span> 1개 플랫폼 통합 처리 → 5개월 완료
                         </div>
-                        
-                        <!-- 효과 요약 -->
+                        <div>
+                            <span class="text-red-500 font-semibold">기존 방식:</span> 서류 23회 제출<br>
+                            <span class="text-agri-green font-semibold">원스톱 방식:</span> 서류 3회 제출 (87% 감소)
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 네비게이션 카드 -->
-    <section class="section bg-light">
-        <div class="container">
-            <div class="text-center mb-5">
-                <h2>상세 내용 둘러보기</h2>
-                <p class="lead">각 섹션을 클릭하여 자세한 내용을 확인하세요</p>
-
+    <!-- Success Stories Section -->
+    <section id="success" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                    성공 사례 (예시)
+                </h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                    청년농업인들의 생생한 창업 스토리를 확인해보세요
+                </p>
             </div>
-            
-            <div class="nav-cards">
-                <a href="data-analysis.html" class="nav-card hover-lift">
-                    <div class="nav-card-header">
-                        <div class="nav-card-icon">
-                            <i class="fas fa-chart-line"></i>
-                        </div>
-                        <div class="nav-card-title">데이터 분석</div>
-                        <div class="nav-card-subtitle">네이버 데이터랩 3년간 빅데이터</div>
-                    </div>
-                    <div class="nav-card-body">
-                        <p class="nav-card-description">
-                            2022-2024년 네이버 검색 트렌드 분석을 통해 도출한 정책 수요와 아이디어의 근거를 제시합니다.
-                        </p>
-                        <div class="nav-card-stats">
-                            <div class="nav-card-stat">
-                                <span class="nav-card-stat-number">86.1점</span>
-                                <span class="nav-card-stat-label">청년농업</span>
-                            </div>
-                            <div class="nav-card-stat">
-                                <span class="nav-card-stat-number">74.2점</span>
-                                <span class="nav-card-stat-label">스마트농업</span>
-                            </div>
-                            <div class="nav-card-stat">
-                                <span class="nav-card-stat-number">+87.3%</span>
-                                <span class="nav-card-stat-label">농업경영</span>
-                            </div>
-                        </div>
-                    </div>
-                </a>
 
-                <a href="problem-definition.html" class="nav-card hover-lift">
-                    <div class="nav-card-header">
-                        <div class="nav-card-icon">
-                            <i class="fas fa-exclamation-triangle"></i>
-                        </div>
-                        <div class="nav-card-title">문제점 정의</div>
-                        <div class="nav-card-subtitle">실제 현장사례 중심 분석</div>
-                    </div>
-                    <div class="nav-card-body">
-                        <p class="nav-card-description">
-                            김○○씨의 실제 창업 과정을 통해 현재 청년농업인이 직면한 구체적 문제점을 분석합니다.
-                        </p>
-                        <div class="nav-card-stats">
-                            <div class="nav-card-stat">
-                                <span class="nav-card-stat-number">10개월</span>
-                                <span class="nav-card-stat-label">창업기간</span>
-                            </div>
-                            <div class="nav-card-stat">
-                                <span class="nav-card-stat-number">5개 기관</span>
-                                <span class="nav-card-stat-label">방문기관</span>
-                            </div>
-                            <div class="nav-card-stat">
-                                <span class="nav-card-stat-number">2,980만원</span>
-                                <span class="nav-card-stat-label">총비용</span>
-                            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Success Story 1 -->
+                <div class="card-hover bg-gradient-to-br from-green-50 to-blue-50 rounded-xl p-8 shadow-md">
+                    <div class="flex items-center mb-6">
+                        <div class="w-16 h-16 bg-agri-green rounded-full flex items-center justify-center text-white font-bold text-xl">김</div>
+                        <div class="ml-4">
+                            <h3 class="font-semibold text-gray-900">김○○님 (29세)</h3>
+                            <p class="text-sm text-gray-600">前 IT개발자 → 파프리카 스마트팜</p>
                         </div>
                     </div>
-                </a>
+                    <div class="space-y-3 text-sm">
+                        <div>📍 <span class="font-medium">위치:</span> 경기 화성 (0.5ha)</div>
+                        <div>💰 <span class="font-medium">매출:</span> 연 3.4억원</div>
+                        <div>⏱️ <span class="font-medium">창업기간:</span> 5개월</div>
+                        <div>👥 <span class="font-medium">고용:</span> 정규직 2명, 계절근로 8명</div>
+                    </div>
+                    <blockquote class="mt-4 p-4 bg-white rounded-lg text-sm italic text-gray-700">
+                        "원스톱 플랫폼 덕분에 복잡한 절차 없이 빠르게 창업할 수 있었어요. 
+                        특히 AI 농지 추천으로 최적의 입지를 찾을 수 있었습니다."
+                    </blockquote>
+                </div>
+                <!-- Success Story 2 -->
+                <div class="card-hover bg-gradient-to-br from-orange-50 to-red-50 rounded-xl p-8 shadow-md">
+                    <div class="flex items-center mb-6">
+                        <div class="w-16 h-16 bg-agri-orange rounded-full flex items-center justify-center text-white font-bold text-xl">박</div>
+                        <div class="ml-4">
+                            <h3 class="font-semibold text-gray-900">박□□님 (32세)</h3>
+                            <p class="text-sm text-gray-600">前 마케터 → 딸기 수경재배</p>
+                        </div>
+                    </div>
+                    <div class="space-y-3 text-sm">
+                        <div>📍 <span class="font-medium">위치:</span> 충남 논산 (0.3ha)</div>
+                        <div>💰 <span class="font-medium">매출:</span> 연 2.8억원</div>
+                        <div>⏱️ <span class="font-medium">창업기간:</span> 4개월</div>
+                        <div>🏆 <span class="font-medium">성과:</span> 지역 우수농가 선정</div>
+                    </div>
+                    <blockquote class="mt-4 p-4 bg-white rounded-lg text-sm italic text-gray-700">
+                        "교육과정에서 배운 IoT 기술로 원격 환경제어가 가능해져 
+                        일과 육아를 병행할 수 있게 되었어요."
+                    </blockquote>
+                </div>
 
-                <a href="solution-overview.html" class="nav-card hover-lift">
-                    <div class="nav-card-header">
-                        <div class="nav-card-icon">
-                            <i class="fas fa-lightbulb"></i>
-                        </div>
-                        <div class="nav-card-title">해결방안</div>
-                        <div class="nav-card-subtitle">원스톱 플랫폼 구축 방안</div>
-                    </div>
-                    <div class="nav-card-body">
-                        <p class="nav-card-description">
-                            청년농업인 스마트농업 창업을 위한 통합 플랫폼의 구체적 설계와 구현 방안을 제시합니다.
-                        </p>
-                        <div class="nav-card-stats">
-                            <div class="nav-card-stat">
-                                <span class="nav-card-stat-number">4대 서비스</span>
-                                <span class="nav-card-stat-label">통합지원</span>
-                            </div>
-                            <div class="nav-card-stat">
-                                <span class="nav-card-stat-number">5개월</span>
-                                <span class="nav-card-stat-label">단축기간</span>
-                            </div>
-                            <div class="nav-card-stat">
-                                <span class="nav-card-stat-number">50% 단축</span>
-                                <span class="nav-card-stat-label">효율성</span>
-                            </div>
+                <!-- Success Story 3 -->
+                <div class="card-hover bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl p-8 shadow-md">
+                    <div class="flex items-center mb-6">
+                        <div class="w-16 h-16 bg-agri-blue rounded-full flex items-center justify-center text-white font-bold text-xl">이</div>
+                        <div class="ml-4">
+                            <h3 class="font-semibold text-gray-900">이△△님 (27세)</h3>
+                            <p class="text-sm text-gray-600">前 회사원 → 토마토 스마트팜</p>
                         </div>
                     </div>
-                </a>
+                    <div class="space-y-3 text-sm">
+                        <div>📍 <span class="font-medium">위치:</span> 전북 김제 (0.8ha)</div>
+                        <div>💰 <span class="font-medium">매출:</span> 연 4.2억원</div>
+                        <div>⏱️ <span class="font-medium">창업기간:</span> 5개월</div>
+                        <div>🌟 <span class="font-medium">특징:</span> 수출농가 인증</div>
+                    </div>
+                    <blockquote class="mt-4 p-4 bg-white rounded-lg text-sm italic text-gray-700">
+                        "정책자금 지원으로 초기 부담 없이 시작할 수 있었고, 
+                        멘토링을 통해 안정적으로 성장할 수 있었습니다."
+                    </blockquote>
+                </div>
+            </div>
 
-                <a href="expected-results.html" class="nav-card hover-lift">
-                    <div class="nav-card-header">
-                        <div class="nav-card-icon">
-                            <i class="fas fa-trophy"></i>
-                        </div>
-                        <div class="nav-card-title">기대효과</div>
-                        <div class="nav-card-subtitle">정량적 경제사회적 효과</div>
-                    </div>
-                    <div class="nav-card-body">
-                        <p class="nav-card-description">
-                            플랫폼 구축으로 인한 경제적 파급효과와 사회적 가치를 정량적으로 분석합니다.
-                        </p>
-                        <div class="nav-card-stats">
-                            <div class="nav-card-stat">
-                                <span class="nav-card-stat-number">537억원</span>
-                                <span class="nav-card-stat-label">경제효과</span>
-                            </div>
-                            <div class="nav-card-stat">
-                                <span class="nav-card-stat-number">900개</span>
-                                <span class="nav-card-stat-label">일자리</span>
-                            </div>
-                            <div class="nav-card-stat">
-                                <span class="nav-card-stat-number">680명</span>
-                                <span class="nav-card-stat-label">청년유입</span>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="legal-framework.html" class="nav-card hover-lift">
-                    <div class="nav-card-header">
-                        <div class="nav-card-icon">
-                            <i class="fas fa-balance-scale"></i>
-                        </div>
-                        <div class="nav-card-title">법령 개정안</div>
-                        <div class="nav-card-subtitle">3개 법령 구체적 개정방안</div>
-                    </div>
-                    <div class="nav-card-body">
-                        <p class="nav-card-description">
-                            후계청년농어업인 등 3개 법령의 상세한 개정안과 단계별 추진 계획을 제시합니다.
-                        </p>
-                        <div class="nav-card-stats">
-                            <div class="nav-card-stat">
-                                <span class="nav-card-stat-number">3개 법령</span>
-                                <span class="nav-card-stat-label">개정대상</span>
-                            </div>
-                            <div class="nav-card-stat">
-                                <span class="nav-card-stat-number">4단계</span>
-                                <span class="nav-card-stat-label">추진계획</span>
-                            </div>
-                            <div class="nav-card-stat">
-                                <span class="nav-card-stat-number">50억원</span>
-                                <span class="nav-card-stat-label">구축예산</span>
-                            </div>
-                        </div>
-                    </div>
-                </a>
+            <div class="text-center mt-12">
+                <button onclick="showMoreStories()" class="bg-agri-green hover:bg-green-700 text-white px-8 py-3 rounded-lg font-medium transition">
+                    더 많은 성공사례 보기 📖
+                </button>
             </div>
         </div>
     </section>
 
-    <!-- 권장 읽기 순서 -->
-    <section class="section bg-white">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 mx-auto text-center">
-                    <h2>권장 읽기 순서</h2>
-                    <p class="lead mb-4">효과적인 이해를 위한 단계별 가이드</p>
-                    
-                    <div class="reading-path">
-                        <div class="path-step">
-                            <div class="step-number">1</div>
-                            <div class="step-content">
-                                <h5>데이터 분석</h5>
-                                <p>아이디어의 근거 이해</p>
-                            </div>
-                        </div>
-                        <div class="path-arrow">
-                            <i class="fas fa-arrow-down"></i>
-                        </div>
-                        <div class="path-step">
-                            <div class="step-number">2</div>
-                            <div class="step-content">
-                                <h5>문제점 정의</h5>
-                                <p>현실적 문제 파악</p>
-                            </div>
-                        </div>
-                        <div class="path-arrow">
-                            <i class="fas fa-arrow-down"></i>
-                        </div>
-                        <div class="path-step">
-                            <div class="step-number">3</div>
-                            <div class="step-content">
-                                <h5>해결방안</h5>
-                                <p>구체적 솔루션 검토</p>
-                            </div>
-                        </div>
-                        <div class="path-arrow">
-                            <i class="fas fa-arrow-down"></i>
-                        </div>
-                        <div class="path-step">
-                            <div class="step-number">4</div>
-                            <div class="step-content">
-                                <h5>기대효과</h5>
-                                <p>경제/사회적 효과</p>
-                            </div>
-                        </div>
-                        <div class="path-arrow">
-                            <i class="fas fa-arrow-down"></i>
-                        </div>
-                        <div class="path-step">
-                            <div class="step-number">5</div>
-                            <div class="step-content">
-                                <h5>법령 개정안</h5>
-                                <p>실행 가능성 확인</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="mt-4">
-                        <a href="data-analysis.html" class="btn btn-primary">
-                            <i class="fas fa-play me-2"></i>시작하기
-                        </a>
-                    </div>
-                </div>
+    <!-- Support Benefits Section -->
+    <section id="support" class="py-20 bg-gray-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">
+                    💰 지원 혜택
+                </h2>
+                <p class="text-lg text-gray-300 max-w-2xl mx-auto">
+                    청년농업인을 위한 다양한 정책 지원을 한 곳에서 신청하세요
+                </p>
             </div>
-        </div>
-    </section>
 
-    <!-- 푸터 -->
-    <footer class="bg-dark text-white py-5" style="background-color: #212121 !important; color: #ffffff !important;">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <h5 style="color: #ffffff !important;">
-                        <i class="fas fa-seedling me-2"></i>
-                        청년농업인 스마트농업 창업 원스톱 플랫폼
-                    </h5>
-                    <p class="text-light" style="color: rgba(255,255,255,0.9) !important;">2025년 농식품 규제혁신 공모전 출품작</p>
-                    <p class="small text-muted" style="color: rgba(255,255,255,0.7) !important;">
-                        네이버 데이터랩 분석을 통한 데이터 기반 정책 제안<br>
-                        실현 가능한 해결방안으로 농업 혁신 가속화
-                    </p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- 창업자금 -->
+                <div class="bg-gradient-to-br from-green-600 to-green-700 rounded-xl p-8 text-center">
+                    <div class="text-4xl mb-4">💵</div>
+                    <h3 class="text-xl font-bold mb-4">창업자금</h3>
+                    <div class="text-3xl font-bold text-yellow-300 mb-2">최대 3억원</div>
+                    <div class="text-sm text-green-100 mb-4">무이자 5년</div>
+                    <ul class="text-sm text-left space-y-2">
+                        <li>• 시설 설치비</li>
+                        <li>• 농기계 구입비</li>
+                        <li>• 초기 운영자금</li>
+                    </ul>
                 </div>
-                <div class="col-lg-6">
-                    <h6 style="color: #ffffff !important;">제안자 정보</h6>
-                    <ul class="list-unstyled">
-                        <li style="color: rgba(255,255,255,0.9) !important;"><i class="fas fa-user me-2"></i>박용환</li>
-                        <li style="color: rgba(255,255,255,0.9) !important;"><i class="fas fa-building me-2"></i>크리에이티브 넥서스</li>
-                        <li style="color: rgba(255,255,255,0.9) !important;"><i class="fas fa-envelope me-2"></i>sanoramyun8@gmail.com</li>
-                        <li style="color: rgba(255,255,255,0.9) !important;"><i class="fas fa-phone me-2"></i>010-7939-3123</li>
+
+                <!-- 시설자금 -->
+                <div class="bg-gradient-to-br from-blue-600 to-blue-700 rounded-xl p-8 text-center">
+                    <div class="text-4xl mb-4">🏗️</div>
+                    <h3 class="text-xl font-bold mb-4">시설자금</h3>
+                    <div class="text-3xl font-bold text-yellow-300 mb-2">최대 5억원</div>
+                    <div class="text-sm text-blue-100 mb-4">1% 이자 10년</div>
+                    <ul class="text-sm text-left space-y-2">
+                        <li>• 스마트팜 시설</li>
+                        <li>• IoT 장비</li>
+                        <li>• 환경제어시스템</li>
+                    </ul>
+                </div>
+
+                <!-- 운영자금 -->
+                <div class="bg-gradient-to-br from-orange-600 to-orange-700 rounded-xl p-8 text-center">
+                    <div class="text-4xl mb-4">⚡</div>
+                    <h3 class="text-xl font-bold mb-4">운영자금</h3>
+                    <div class="text-3xl font-bold text-yellow-300 mb-2">최대 1억원</div>
+                    <div class="text-sm text-orange-100 mb-4">2% 이자 3년</div>
+                    <ul class="text-sm text-left space-y-2">
+                        <li>• 종자·종묘비</li>
+                        <li>• 비료·농약비</li>
+                        <li>• 인건비</li>
                     </ul>
                 </div>
             </div>
-            
-            <hr class="border-secondary my-4" style="border-color: rgba(255,255,255,0.3) !important;">
-            
-            <div class="row align-items-center">
-                <div class="col-md-6">
-                    <p class="small mb-0" style="color: rgba(255,255,255,0.8) !important;">&copy; 2025 크리에이티브 넥서스. 농식품 규제혁신 공모전 출품작.</p>
+
+            <div class="mt-16 bg-white/10 backdrop-blur-sm rounded-xl p-8">
+                <h3 class="text-2xl font-bold text-center mb-8">📋 추가 지원 혜택</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <h4 class="font-semibold text-lg mb-4 text-yellow-300">🎓 교육 지원</h4>
+                        <ul class="space-y-2 text-gray-300">
+                            <li>• 스마트농업 기술 교육 (8주)</li>
+                            <li>• 경영·마케팅 교육</li>
+                            <li>• 1:1 멘토링 (6개월)</li>
+                            <li>• 해외 연수 기회</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-lg mb-4 text-yellow-300">🤝 네트워킹 지원</h4>
+                        <ul class="space-y-2 text-gray-300">
+                            <li>• 청년농업인 네트워크 연결</li>
+                            <li>• 선배 농업인 멘토 매칭</li>
+                            <li>• 정기 교류회 및 세미나</li>
+                            <li>• 판로 개척 지원</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="col-md-6 text-md-end">
-                    <span class="small text-muted" style="color: rgba(255,255,255,0.7) !important;">
-                        마감: 2025.05.30 18:00 | 
-                        <a href="mailto:mafrari@korea.kr" class="text-primary" style="color: #4CAF50 !important;">제출: mafrari@korea.kr</a>
-                    </span>
+            </div>
+
+            <div class="text-center mt-12">
+                <button onclick="startApplication()" class="bg-agri-orange hover:bg-orange-600 text-white px-8 py-4 rounded-lg text-lg font-semibold transition transform hover:scale-105 shadow-lg">
+                    💰 지원 혜택 신청하기
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">🌱 청년농업 원스톱</h3>
+                    <p class="text-gray-400 text-sm">
+                        청년농업인의 성공적인 창업을 위한<br>
+                        통합 지원 플랫폼
+                    </p>
                 </div>
+                <div>
+                    <h4 class="font-semibold mb-4">서비스</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-white transition">원스톱 신청</a></li>
+                        <li><a href="#" class="hover:text-white transition">농지 매칭</a></li>
+                        <li><a href="#" class="hover:text-white transition">교육 과정</a></li>
+                        <li><a href="#" class="hover:text-white transition">자금 지원</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">지원</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-white transition">이용 가이드</a></li>
+                        <li><a href="#" class="hover:text-white transition">FAQ</a></li>
+                        <li><a href="#" class="hover:text-white transition">고객센터</a></li>
+                        <li><a href="#" class="hover:text-white transition">문의하기</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">문의</h4>
+                    <div class="text-sm text-gray-400 space-y-2">
+                        <div>📞 1588-0000</div>
+                        <div>📧 support@youngfarmer.go.kr</div>
+                        <div>📍 세종특별자치시 농식품부</div>
+                        <div class="pt-2">
+                            <span class="text-xs text-gray-500">평일 09:00-18:00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-sm text-gray-400">
+                <p>&copy; 2025 농림축산식품부. All rights reserved. | 개인정보처리방침 | 이용약관</p>
             </div>
         </div>
     </footer>
 
-    <!-- JavaScript 라이브러리 -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    
-    <!-- 커스텀 JavaScript -->
-    <script src="assets/js/common.js"></script>
-    
-    <!-- 페이지별 스크립트 -->
-    <script>
-        // 통계 숫자 애니메이션 (CountUp 효과)
-        document.addEventListener('DOMContentLoaded', function() {
-            // 1초 지연 후 애니메이션 시작 (페이지 로딩 완료 대기)
-            setTimeout(() => {
-                const statNumbers = document.querySelectorAll('.stat-number[data-target]');
-                
-                statNumbers.forEach((element, index) => {
-                    const target = parseFloat(element.getAttribute('data-target'));
-                    let current = 0;
-                    const increment = target / 80; // 더 부드러운 애니메이션
-                    
-                    const timer = setInterval(() => {
-                        current += increment;
-                        if (current >= target) {
-                            current = target;
-                            clearInterval(timer);
-                        }
-                        
-                        // 숫자 표시 로직 개선
-                        if (target >= 100) {
-                            element.textContent = Math.floor(current);
-                        } else {
-                            element.textContent = current.toFixed(1);
-                        }
-                    }, 25); // 더 부드러운 간격
-                });
-            }, 1000);
-            
-            // GSAP 애니메이션 (GSAP 로드 확인 후 실행)
-            if (typeof gsap !== 'undefined') {
-                // Before/After 카드 애니메이션
-                gsap.from('.comparison-card', {
-                    duration: 1,
-                    scale: 0.9,
-                    opacity: 0,
-                    stagger: 0.3,
-                    ease: 'back.out(1.7)',
-                    delay: 0.5
-                });
-                
-                gsap.from('.transformation-arrow', {
-                    duration: 0.8,
-                    scale: 0,
-                    opacity: 0,
-                    delay: 1.2,
-                    ease: 'elastic.out(1, 0.5)'
-                });
-                
-                gsap.from('.impact-summary', {
-                    duration: 0.8,
-                    y: 30,
-                    opacity: 0,
-                    delay: 1.5
-                });
-                
-                // 읽기 경로 애니메이션
-                gsap.from('.path-step', {
-                    duration: 0.8,
-                    y: 50,
-                    opacity: 0,
-                    stagger: 0.2,
-                    scrollTrigger: {
-                        trigger: '.reading-path',
-                        start: 'top 80%'
-                    }
-                });
-                
-                // 네비게이션 카드 애니메이션
-                gsap.from('.nav-card', {
-                    duration: 0.6,
-                    y: 30,
-                    opacity: 0,
-                    stagger: 0.1,
-                    scrollTrigger: {
-                        trigger: '.nav-cards',
-                        start: 'top 90%'
-                    }
-                });
-            } else {
-                console.warn('GSAP가 로드되지 않았습니다.');
-            }
-        });
-    </script>
-    
-    <style>
-        /* 페이지 특화 스타일 */
-        .page-header {
-            background: linear-gradient(135deg, #2E7D32 0%, #4CAF50 50%, #1976D2 100%);
-            color: white;
-            padding: 80px 0 60px 0;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .page-header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0,0,0,0.1);
-            z-index: 1;
-        }
-        
-        .page-header .container {
-            position: relative;
-            z-index: 2;
-        }
-        
-        .page-header h1 {
-            color: white !important;
-            font-size: 3rem;
-            font-weight: 700;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            margin-bottom: 1rem;
-        }
-        
-        .page-header .lead {
-            color: rgba(255,255,255,0.95) !important;
-            font-size: 1.25rem;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
-            margin-bottom: 2rem;
-        }
-        
-        .stat-highlight {
-            text-align: center;
-            padding: 1rem;
-            background: rgba(255,255,255,0.1);
-            border-radius: 12px;
-            border: 1px solid rgba(255,255,255,0.2);
-            backdrop-filter: blur(10px);
-        }
-        
-        .stat-highlight .stat-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            font-family: 'Roboto', monospace;
-            color: white !important;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            display: block;
-        }
-        
-        .stat-highlight .stat-label {
-            font-size: 0.9rem;
-            color: rgba(255,255,255,0.9) !important;
-            margin-top: 0.5rem;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
-        }
-        
-        .breadcrumb {
-            margin-top: 2rem;
-        }
-        
-        .breadcrumb-item {
-            color: rgba(255,255,255,0.8) !important;
-            font-size: 0.875rem;
-            margin: 0 0.5rem;
-        }
-        
-        .breadcrumb-item:not(:last-child)::after {
-            content: ' | ';
-            color: rgba(255,255,255,0.6);
-        }
-        
-        .key-points .point-item {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 1.5rem;
-        }
-        
-        .key-points .point-item i {
-            font-size: 1.5rem;
-            margin-right: 1rem;
-            margin-top: 0.25rem;
-        }
-        
-        .project-visual {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-        }
-        
-        .visual-card {
-            background: rgba(255,255,255,0.1);
-            border-radius: 1rem;
-            padding: 2rem;
-            text-align: center;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.2);
-            min-width: 200px;
-        }
-        
-        .visual-card.success {
-            background: rgba(76,175,80,0.2);
-            border-color: rgba(76,175,80,0.3);
-        }
-        
-        .card-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            opacity: 0.9;
-        }
-        
-        .arrow {
-            font-size: 2rem;
-            color: rgba(255,255,255,0.7);
-        }
-        
-        .reading-guide {
-            margin-top: 1rem;
-        }
-        
-        .reading-path {
-            max-width: 300px;
-            margin: 0 auto;
-        }
-        
-        .path-step {
-            display: flex;
-            align-items: center;
-            text-align: left;
-            margin: 1rem 0;
-        }
-        
-        .step-number {
-            width: 40px;
-            height: 40px;
-            background: var(--primary-green);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 600;
-            margin-right: 1rem;
-            flex-shrink: 0;
-        }
-        
-        .step-content h5 {
-            margin-bottom: 0.25rem;
-            font-size: 1rem;
-        }
-        
-        .step-content p {
-            margin: 0;
-            font-size: 0.875rem;
-            color: var(--text-gray);
-        }
-        
-        .path-arrow {
-            text-align: center;
-            color: var(--primary-green);
-            margin: 0.5rem 0;
-        }
-        
-        /* Before/After 비교 카드 스타일 */
-        .before-after-container {
-            padding: 2rem 0;
-        }
-        
-        .before-after-container h3 {
-            color: var(--text-dark);
-            font-weight: 700;
-            margin-bottom: 2rem;
-        }
-        
-        .comparison-cards {
-            display: flex;
-            gap: 2rem;
-            align-items: stretch;
-            margin-bottom: 2rem;
-        }
-        
-        .comparison-card {
-            flex: 1;
-            background: white;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .comparison-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 40px rgba(0,0,0,0.15);
-        }
-        
-        .before-card .card-header {
-            background: linear-gradient(135deg, #FF6B35, #FF8A65);
-            color: white;
-        }
-        
-        .after-card .card-header {
-            background: linear-gradient(135deg, #4CAF50, #66BB6A);
-            color: white;
-        }
-        
-        .card-header {
-            padding: 1.5rem;
-            text-align: center;
-            position: relative;
-        }
-        
-        .status-icon {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-            opacity: 0.9;
-        }
-        
-        .card-header h4 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 0.25rem;
-            color: white;
-        }
-        
-        .subtitle {
-            font-size: 0.9rem;
-            opacity: 0.9;
-            margin: 0;
-        }
-        
-        .card-content {
-            padding: 1.5rem;
-        }
-        
-        .metric {
-            display: flex;
-            align-items: center;
-            padding: 1rem 0;
-            border-bottom: 1px solid #f0f0f0;
-        }
-        
-        .metric:last-child {
-            border-bottom: none;
-        }
-        
-        .metric-icon {
-            width: 40px;
-            height: 40px;
-            background: #f8f9fa;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 1rem;
-            color: #666;
-        }
-        
-        .metric.improved .metric-icon {
-            background: #e8f5e8;
-            color: #4CAF50;
-        }
-        
-        .metric-info {
-            flex: 1;
-        }
-        
-        .metric-number {
-            display: block;
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--text-dark);
-            margin-bottom: 0.25rem;
-        }
-        
-        .metric-label {
-            font-size: 0.85rem;
-            color: var(--text-gray);
-        }
-        
-        .improvement {
-            display: inline-block;
-            background: #4CAF50;
-            color: white;
-            padding: 2px 8px;
-            border-radius: 12px;
-            font-size: 0.75rem;
-            font-weight: 500;
-            margin-left: 0.5rem;
-        }
-        
-        .pain-points, .benefits {
-            padding: 1rem 1.5rem;
-            background: #f8f9fa;
-        }
-        
-        .pain-points h5 {
-            color: #FF6B35;
-            font-size: 0.9rem;
-            margin-bottom: 0.75rem;
-        }
-        
-        .benefits h5 {
-            color: #4CAF50;
-            font-size: 0.9rem;
-            margin-bottom: 0.75rem;
-        }
-        
-        .pain-points ul, .benefits ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        
-        .pain-points li, .benefits li {
-            font-size: 0.85rem;
-            padding: 0.25rem 0;
-            color: var(--text-gray);
-            position: relative;
-            padding-left: 1rem;
-        }
-        
-        .pain-points li::before {
-            content: '×';
-            position: absolute;
-            left: 0;
-            color: #FF6B35;
-            font-weight: bold;
-        }
-        
-        .benefits li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: #4CAF50;
-            font-weight: bold;
-        }
-        
-        .transformation-arrow {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-width: 80px;
-        }
-        
-        .arrow-container {
-            text-align: center;
-        }
-        
-        .arrow-line {
-            width: 60px;
-            height: 2px;
-            background: linear-gradient(to right, #FF6B35, #4CAF50);
-            margin: 0 auto 0.5rem auto;
-            position: relative;
-        }
-        
-        .arrow-head {
-            font-size: 1.5rem;
-            color: #4CAF50;
-            margin-bottom: 0.5rem;
-        }
-        
-        .arrow-text {
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: var(--text-gray);
-            white-space: nowrap;
-        }
-        
-        .impact-summary {
-            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
-            border-radius: 12px;
-            padding: 1.5rem;
-            margin-top: 2rem;
-        }
-        
-        .impact-metric {
-            text-align: center;
-            padding: 0.5rem;
-        }
-        
-        .impact-number {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--primary-green);
-            font-family: 'Roboto', monospace;
-            display: block;
-        }
-        
-        .impact-label {
-            font-size: 0.8rem;
-            color: var(--text-gray);
-            margin-top: 0.25rem;
-        }
-        
-        @media (max-width: 767.98px) {
-            .comparison-cards {
-                flex-direction: column;
-                gap: 1rem;
-            }
-            
-            .transformation-arrow {
-                min-width: auto;
-                padding: 1rem 0;
-            }
-            
-            .arrow-line {
-                width: 40px;
-                transform: rotate(90deg);
-            }
-            
-            .arrow-head {
-                transform: rotate(90deg);
-            }
-            
-            .impact-summary .row {
-                gap: 1rem;
-            }
-            
-            .impact-number {
-                font-size: 1.4rem;
-            }
-        }
-    </style>
+    <script src="script.js"></script>
 </body>
 </html>
